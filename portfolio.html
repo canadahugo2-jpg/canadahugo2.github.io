@@ -1,73 +1,232 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="es">
 <head>
     <title>PORTFOLIO | HUGO RETA</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style>
-        body { margin: 0; padding: 0; background: #000; color: white; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
-        
-        /* Navegación Minimal */
-        nav { padding: 40px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); z-index: 100; }
-        nav a { color: white; text-decoration: none; text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem; font-weight: 300; transition: 0.3s; opacity: 0.7; }
-        nav a:hover { opacity: 1; }
-
-        /* Cuadrícula de Fotos */
-        .photo-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(45%, 1fr)); 
-            gap: 10px; 
-            padding: 0 10px 100px 10px;
-            max-width: 1400px;
-            margin: 0 auto;
+        /* --- 1. RESET Y FUNDAMENTOS --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { 
+            background-color: #000; 
+            color: #fff; 
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .photo-item { position: relative; overflow: hidden; background: #0a0a0a; line-height: 0; }
-        .photo-item img { 
-            width: 100%; 
-            height: auto; 
-            display: block; 
-            transition: transform 0.8s ease;
-            filter: grayscale(20%); /* Un toque de estilo para que todas unifiquen */
+        /* --- 2. NAVEGACIÓN CINEMATOGRÁFICA --- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            mix-blend-mode: difference; /* El texto cambia de color según el fondo */
         }
-        .photo-item:hover img { transform: scale(1.03); filter: grayscale(0%); }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 0.65rem;
+            font-weight: 300;
+            transition: opacity 0.4s ease;
+        }
+        nav a:hover { opacity: 0.5; }
 
-        /* Pie de foto sutil */
-        .photo-info { padding: 15px 5px; }
-        .photo-info span { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; color: #666; }
+        /* --- 3. ESTRUCTURA DEL PORTFOLIO --- */
+        .container {
+            width: 100%;
+            padding: 150px 0;
+        }
 
-        /* Móvil */
+        /* Título de sección sutil */
+        .section-header {
+            padding: 0 60px 80px 60px;
+            max-width: 1200px;
+        }
+        .section-header h2 {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 12px;
+            font-weight: 200;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* Grid Dinámico de Imágenes */
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 200px; /* Mucho aire entre piezas para dar importancia */
+            align-items: center;
+        }
+
+        /* Cada Item del Portfolio */
+        .item {
+            position: relative;
+            width: 70%; /* En escritorio no ocupa todo el ancho, respira */
+            max-width: 1100px;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* El marco de la imagen */
+        .image-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            background: #0a0a0a;
+            aspect-ratio: 16 / 9; /* Proporción de cine */
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s ease;
+            filter: saturate(0.8);
+        }
+
+        .item:hover img {
+            transform: scale(1.05);
+            filter: saturate(1);
+        }
+
+        /* Detalles de texto lateral (Estilo negativo de película) */
+        .meta-data {
+            position: absolute;
+            top: 0;
+            right: -40px;
+            height: 100%;
+            writing-mode: vertical-rl;
+            text-transform: uppercase;
+            font-size: 0.55rem;
+            letter-spacing: 4px;
+            color: rgba(255,255,255,0.2);
+            font-weight: 300;
+        }
+
+        /* Título del proyecto bajo la foto */
+        .project-title {
+            margin-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .project-title h3 {
+            font-size: 0.9rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+        .project-title span {
+            font-size: 0.6rem;
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 2px;
+        }
+
+        /* --- 4. RESPONSIVE (MÓVIL) --- */
         @media (max-width: 768px) {
-            .photo-grid { grid-template-columns: 1fr; padding: 0 15px 50px 15px; }
-            nav { padding: 25px 20px; }
+            nav { padding: 30px 25px; }
+            .container { padding: 120px 0; }
+            .section-header { padding: 0 25px 50px 25px; }
+            
+            .item { 
+                width: 90%; /* En móvil aprovechamos más la pantalla */
+                gap: 100px; 
+            }
+            .gallery { gap: 120px; }
+            
+            .image-wrapper { aspect-ratio: 4 / 5; /* En móvil, fotos más verticales funcionan mejor */ }
+            
+            .meta-data { display: none; } /* Quitamos el texto vertical para limpiar */
+            
+            .project-title h3 { font-size: 0.75rem; }
+        }
+
+        /* --- 5. FOOTER --- */
+        footer {
+            padding: 100px 60px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        footer p {
+            font-size: 0.6rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            opacity: 0.3;
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html">← Index</a>
-        <a href="myself.html">Myself</a>
+        <a href="index.html">← INDEX</a>
+        <a href="myself.html">MYSELF</a>
     </nav>
 
-    <div class="photo-grid">
+    <div class="container">
         
-        <div class="photo-item">
-            <img src="URL_DE_TU_FOTO_1.jpg" alt="Proyecto Hugo Reta">
-            <div class="photo-info"><span>Lanzarote / 2026</span></div>
-        </div>
+        <header class="section-header">
+            <h2>Selected Works</h2>
+        </header>
 
-        <div class="photo-item">
-            <img src="URL_DE_TU_FOTO_2.jpg" alt="Proyecto Hugo Reta">
-            <div class="photo-info"><span>Production / 02</span></div>
-        </div>
+        <main class="gallery">
 
-        <div class="photo-item">
-            <img src="URL_DE_TU_FOTO_3.jpg" alt="Proyecto Hugo Reta">
-            <div class="photo-info"><span>Portrait / 03</span></div>
-        </div>
+            <article class="item">
+                <div class="image-wrapper">
+                    <img src="foto1.jpg" alt="Hugo Reta Photography">
+                    <div class="meta-data">Lanzarote // Project 01</div>
+                </div>
+                <div class="project-title">
+                    <h3>Island Textures</h3>
+                    <span>2026</span>
+                </div>
+            </article>
 
+            <article class="item">
+                <div class="image-wrapper">
+                    <img src="foto2.jpg" alt="Hugo Reta Photography">
+                    <div class="meta-data">Production // Studio</div>
+                </div>
+                <div class="project-title">
+                    <h3>Inner Shadows</h3>
+                    <span>Film Still</span>
+                </div>
+            </article>
+
+            <article class="item">
+                <div class="image-wrapper">
+                    <img src="foto3.jpg" alt="Hugo Reta Photography">
+                    <div class="meta-data">Editorial // Fashion</div>
+                </div>
+                <div class="project-title">
+                    <h3>Velvet Noir</h3>
+                    <span>Editorial</span>
+                </div>
+            </article>
+
+            <article class="item">
+                <div class="image-wrapper">
+                    <img src="foto4.jpg" alt="Hugo Reta Photography">
+                    <div class="meta-data">Landscape // Cinematic</div>
+                </div>
+                <div class="project-title">
+                    <h3>Horizon Drift</h3>
+                    <span>Personal Project</span>
+                </div>
+            </article>
+
+        </main>
     </div>
+
+    <footer>
+        <p>&copy; 2026 HUGO RETA. All Rights Reserved.</p>
+    </footer>
 
 </body>
 </html>

@@ -7,18 +7,15 @@
     <style>
         body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
         
-        /* 1. EL VÍDEO (Configuración de base) */
         .vimeo-wrapper { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
         
-        /* 2. EL CONTENEDOR DE BOTONES (Configuración de base) */
         .overlay { 
             position: relative; z-index: 10; width: 100%; height: 100%; 
             display: flex; flex-direction: column; align-items: center; 
-            justify-content: flex-end; /* Abajo */
+            justify-content: flex-end; 
             box-sizing: border-box;
         }
         
-        /* 3. ESTILO DE BOTONES (Configuración de base) */
         .buttons { display: flex; gap: 20px; }
         .btn { 
             padding: 10px 30px; 
@@ -36,53 +33,46 @@
         }
         .btn:hover { background: white; color: black; border-color: white; }
 
-
-        /* ------------------------------------------------ */
-        /* --- CONFIGURACIÓN PARA ORDENADOR (SIN CAMBIOS) --- */
-        /* ------------------------------------------------ */
+        /* --- ORDENADOR (SIN CAMBIOS) --- */
         @media (min-width: 769px) {
-            /* El vídeo sigue igual, cubriendo todo */
             .vimeo-wrapper iframe { 
                 width: 100vw; height: 56.25vw; 
                 min-height: 100vh; min-width: 177.77vh; 
                 position: absolute; top: 50%; left: 50%; 
                 transform: translate(-50%, -50%); 
             }
-            /* Los botones a 60px del borde */
             .overlay { padding-bottom: 60px; }
         }
 
-
-        /* ------------------------------------------------ */
-        /* --- CONFIGURACIÓN PARA MÓVIL (OPTIMIZADA) --- */
-        /* ------------------------------------------------ */
+        /* --- MÓVIL (70% VÍDEO - 30% BOTONES CON GRADIENT) --- */
         @media (max-width: 768px) {
-            /* VÍDEO CON MENOS ZOOM: Bajamos el zoom al 120% (antes estaba al ~180% en vertical) */
             .vimeo-wrapper iframe { 
-                width: 120vw; /* Menos zoom lateral */
-                height: 67.5vw; /* Mantiene la proporción 16:9 */
+                width: 177.77vh; /* Mantiene proporción 16:9 ocupando el ancho */
+                height: 70vh;    /* OCUPA EL 70% DE LA ALTURA */
                 position: absolute; 
-                top: 0; /* Lo fijamos arriba */
+                top: 0; 
                 left: 50%; 
-                transform: translateX(-50%); /* Centrado solo horizontal */
+                transform: translateX(-50%); 
             }
 
-            /* CAPA CON DEGRADADO OSCURO ABAJO (Donde van los botones) */
             .overlay { 
-                /* Degradado negro suave hacia arriba */
-                background: linear-gradient(to top, #000000 0%, #000000 25%, transparent 100%); 
-                padding-bottom: 12vh; /* Altura cómoda para dedos */
+                /* GRADIENT: Empieza transparente y se vuelve negro justo donde acaba el video */
+                background: linear-gradient(to bottom, 
+                    rgba(0,0,0,0) 0%, 
+                    rgba(0,0,0,0) 50%, 
+                    rgba(0,0,0,0.8) 70%, 
+                    rgba(0,0,0,1) 100%); 
+                padding-bottom: 8vh; 
             }
 
-            /* BOTONES APILADOS (No amontonados) */
             .buttons { 
                 flex-direction: column; 
-                gap: 15px; /* Espacio para que no se toquen */
-                width: 80%; /* Ancho cómodo en la pantalla */
+                gap: 12px; 
+                width: 85%; 
             }
             .btn { 
-                padding: 16px 20px; /* Más altos para pulsar mejor */
-                font-size: 0.8rem; /* Letra un poco más legible */
+                padding: 16px 20px; 
+                font-size: 0.8rem; 
             }
         }
     </style>

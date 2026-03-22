@@ -3,52 +3,88 @@
 <head>
     <title>HUGO RETA</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style>
-        /* 1. Reset de pantalla completa */
         body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
         
-        /* 2. El vídeo de fondo (Capa inferior) */
+        /* 1. EL VÍDEO (Configuración de base) */
         .vimeo-wrapper { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-        .vimeo-wrapper iframe { width: 100vw; height: 56.25vw; min-height: 100vh; min-width: 177.77vh; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
-
-        /* 3. La capa de los botones (Abajo en el centro) */
+        
+        /* 2. EL CONTENEDOR DE BOTONES (Configuración de base) */
         .overlay { 
-            position: relative; 
-            z-index: 10; 
-            width: 100%; 
-            height: 100%; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: flex-end; /* Los empuja abajo */
-            padding-bottom: 60px; /* Distancia del borde inferior */
+            position: relative; z-index: 10; width: 100%; height: 100%; 
+            display: flex; flex-direction: column; align-items: center; 
+            justify-content: flex-end; /* Abajo */
             box-sizing: border-box;
-            background: rgba(0,0,0,0.1); 
         }
         
-        /* 4. Contenedor de botones */
+        /* 3. ESTILO DE BOTONES (Configuración de base) */
         .buttons { display: flex; gap: 20px; }
-
-        /* 5. Estilo Redondeado Minimalista */
         .btn { 
             padding: 10px 30px; 
-            border: 1px solid rgba(255,255,255,0.8); 
+            border: 1px solid rgba(255,255,255,0.7); 
             color: white; 
             text-decoration: none; 
             text-transform: uppercase; 
             letter-spacing: 2px; 
             font-size: 0.75rem; 
-            border-radius: 50px; /* Botones redondeados */
+            border-radius: 50px; 
             transition: all 0.4s ease; 
             background: rgba(0,0,0,0.2); 
-            backdrop-filter: blur(4px); /* Efecto cristal sutil */
+            backdrop-filter: blur(4px); 
+            text-align: center;
         }
-
         .btn:hover { background: white; color: black; border-color: white; }
 
-        /* Ajuste para móviles */
-        @media (max-width: 768px) { .buttons { flex-direction: column; gap: 15px; } }
+
+        /* ------------------------------------------------ */
+        /* --- CONFIGURACIÓN PARA ORDENADOR (SIN CAMBIOS) --- */
+        /* ------------------------------------------------ */
+        @media (min-width: 769px) {
+            /* El vídeo sigue igual, cubriendo todo */
+            .vimeo-wrapper iframe { 
+                width: 100vw; height: 56.25vw; 
+                min-height: 100vh; min-width: 177.77vh; 
+                position: absolute; top: 50%; left: 50%; 
+                transform: translate(-50%, -50%); 
+            }
+            /* Los botones a 60px del borde */
+            .overlay { padding-bottom: 60px; }
+        }
+
+
+        /* ------------------------------------------------ */
+        /* --- CONFIGURACIÓN PARA MÓVIL (OPTIMIZADA) --- */
+        /* ------------------------------------------------ */
+        @media (max-width: 768px) {
+            /* VÍDEO CON MENOS ZOOM: Bajamos el zoom al 120% (antes estaba al ~180% en vertical) */
+            .vimeo-wrapper iframe { 
+                width: 120vw; /* Menos zoom lateral */
+                height: 67.5vw; /* Mantiene la proporción 16:9 */
+                position: absolute; 
+                top: 0; /* Lo fijamos arriba */
+                left: 50%; 
+                transform: translateX(-50%); /* Centrado solo horizontal */
+            }
+
+            /* CAPA CON DEGRADADO OSCURO ABAJO (Donde van los botones) */
+            .overlay { 
+                /* Degradado negro suave hacia arriba */
+                background: linear-gradient(to top, #000000 0%, #000000 25%, transparent 100%); 
+                padding-bottom: 12vh; /* Altura cómoda para dedos */
+            }
+
+            /* BOTONES APILADOS (No amontonados) */
+            .buttons { 
+                flex-direction: column; 
+                gap: 15px; /* Espacio para que no se toquen */
+                width: 80%; /* Ancho cómodo en la pantalla */
+            }
+            .btn { 
+                padding: 16px 20px; /* Más altos para pulsar mejor */
+                font-size: 0.8rem; /* Letra un poco más legible */
+            }
+        }
     </style>
 </head>
 <body>

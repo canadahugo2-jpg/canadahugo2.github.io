@@ -1,62 +1,60 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Hugo Reta</title>
-    <meta charset="utf-8" />
+    <title>HUGO RETA | Filmmaker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* 1. Fondo negro y reset */
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+        /* Reseteo y pantalla completa */
+        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background: #000; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
         
-        /* 2. El vídeo de fondo */
-        .vimeo-wrapper { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+        /* Contenedor del vídeo de fondo */
+        .vimeo-wrapper { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
         .vimeo-wrapper iframe { width: 100vw; height: 56.25vw; min-height: 100vh; min-width: 177.77vh; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
 
-        /* 3. Capa de contenido (Nombre arriba, Botones abajo) */
-        .overlay { position: relative; z-index: 10; width: 100%; height: 100%; background: rgba(0,0,0,0.2); display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 60px 0; box-sizing: border-box; }
-        
-        /* Nombre arriba con estilo minimal */
-        h1 { font-size: 1.8rem; letter-spacing: 10px; color: white; text-transform: uppercase; font-weight: 200; margin-top: 20px; }
+        /* Capa sutil para mejorar legibilidad inferior */
+        .overlay { position: absolute; bottom: 0; left: 0; width: 100%; height: 25%; background: linear-gradient(transparent, rgba(0,0,0,0.5)); display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 40px; }
 
-        /* Contenedor de botones abajo */
-        .buttons { display: flex; gap: 15px; margin-bottom: 40px; }
+        /* Título pequeño y minimalista encima de los botones */
+        h1 { color: white; font-size: 0.9rem; letter-spacing: 4px; font-weight: 300; text-transform: uppercase; margin-bottom: 20px; opacity: 0.8; }
 
-        /* Estilo de botones: Pequeños, Redondeados y Elegantes */
+        /* Contenedor de botones */
+        .buttons { display: flex; gap: 15px; }
+
+        /* Botones pequeños y redondeados */
         .btn { 
-            padding: 10px 25px; 
-            border: 1px solid rgba(255,255,255,0.8); 
+            padding: 8px 18px; 
+            border: 1px solid rgba(255, 255, 255, 0.4); 
+            border-radius: 20px; /* Esquinas muy redondeadas */
             color: white; 
             text-decoration: none; 
             text-transform: uppercase; 
-            letter-spacing: 2px; 
-            font-size: 0.7rem; 
-            border-radius: 30px; /* Bordes redondeados */
-            transition: all 0.4s ease; 
-            background: rgba(0,0,0,0.2); /* Fondo sutil */
-            backdrop-filter: blur(5px); /* Efecto cristal */
+            font-size: 0.65rem; /* Muy pequeños */
+            letter-spacing: 1.5px; 
+            transition: all 0.4s ease;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(2px); /* Un toque de desenfoque moderno */
         }
 
-        .btn:hover { background: white; color: black; border-color: white; }
-
-        /* Ajuste para móvil (uno encima de otro) */
-        @media (max-width: 768px) { .buttons { flex-direction: column; align-items: center; } h1 { font-size: 1.4rem; letter-spacing: 6px; } }
+        /* Efecto al pasar el ratón */
+        .btn:hover { 
+            background: white; 
+            color: black; 
+            border-color: white;
+            transform: translateY(-2px); /* Sutil levantamiento */
+        }
     </style>
 </head>
 <body>
-
     <div class="vimeo-wrapper">
-        <iframe src="https://player.vimeo.com/video/TU_ID_AQUI?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1" frameborder="0" allow="autoplay; fullscreen"></iframe>
+        <iframe src="https://player.vimeo.com/video/1175946451?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1" frameborder="0"></iframe>
     </div>
-
+    
     <div class="overlay">
         <h1>HUGO RETA</h1>
-        
         <div class="buttons">
             <a href="portfolio.html" class="btn">Portfolio</a>
             <a href="myself.html" class="btn">Myself</a>
         </div>
     </div>
-
 </body>
 </html>
-<iframe src="https://player.vimeo.com/video/1175946451?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1" width="3840" height="2160" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="WEBvid"></iframe>

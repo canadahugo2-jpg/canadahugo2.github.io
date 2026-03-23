@@ -1,4 +1,4 @@
-    <!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html lang="es">
 <head>
     <title>HUGO RETA</title>
@@ -22,48 +22,47 @@
         .btn { padding: 14px 40px; border: 1px solid rgba(255,255,255,0.4); color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 4px; font-size: 13px; font-weight: 300; border-radius: 50px; background: rgba(0,0,0,0.1); backdrop-filter: blur(10px); transition: 0.4s; }
         .btn:hover { background: #fff; color: #000; border-color: #fff; }
 
-        /* --- 3. AJUSTE MÓVIL 55/45 SIN CORTE --- */
+        /* --- 3. AJUSTE MÓVIL: ZOOM LIGERO + 55/45 --- */
         @media (max-width: 768px) {
             .brand { top: 50px !important; }
             .brand h1 { font-size: 11px !important; letter-spacing: 10px !important; text-indent: 10px !important; }
 
-            /* El contenedor ocupa el 55% de la pantalla */
             .vimeo-wrapper { 
                 height: 55vh !important; 
                 width: 100% !important; 
                 position: absolute !important; 
                 top: 0 !important; 
                 overflow: hidden !important;
+                background: #000;
             }
             
-            /* El vídeo se ajusta al 100% de ese espacio (sin zoom) */
             .vimeo-wrapper iframe { 
                 height: 100% !important; 
                 width: 100% !important; 
                 top: 0 !important; 
                 left: 0 !important; 
-                transform: none !important; 
+                /* ZOOM LIGERO: scale(1.1) lo amplia un 10% */
+                transform: scale(1.1) !important; 
                 object-fit: cover !important; 
             }
 
             .overlay { 
                 height: 100vh !important;
-                padding-bottom: 55px !important; /* Posición baja según tus círculos rojos */
-                /* DEGRADADO ULTRA-SUAVE (SIN LÍNEA) */
+                padding-bottom: 55px !important; 
                 background: linear-gradient(to bottom, 
                     rgba(0,0,0,0) 0%, 
                     rgba(0,0,0,0) 30%, 
                     rgba(0,0,0,0.1) 40%, 
                     rgba(0,0,0,0.5) 48%, 
                     rgba(0,0,0,0.9) 53%, 
-                    #000 55%, /* El negro total empieza justo donde acaba el vídeo */
+                    #000 55%, 
                     #000 100%) !important; 
             }
 
-            .buttons { flex-direction: column !important; width: 80% !important; gap: 12px !important; }
+            .buttons { flex-direction: column !important; width: 80% !important; gap: 12px !important; display: flex !important; align-items: center !important; }
             .btn { padding: 18px !important; font-size: 14px !important; width: 100% !important; text-align: center !important; }
 
-            .social-icons { display: flex !important; gap: 35px !important; margin-top: 30px !important; }
+            .social-icons { display: flex !important; gap: 35px !important; margin-top: 30px !important; justify-content: center !important; width: 100% !important; }
             .social-icons a { color: rgba(255,255,255,0.4) !important; font-size: 22px !important; text-decoration: none !important; }
         }
     </style>

@@ -21,28 +21,60 @@
         .btn { padding: 14px 40px; border: 1px solid rgba(255,255,255,0.4); color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 4px; font-size: 13px; font-weight: 300; border-radius: 50px; background: rgba(0,0,0,0.1); backdrop-filter: blur(10px); transition: 0.4s; }
         .btn:hover { background: #fff; color: #000; border-color: #fff; }
 
-        /* --- 3. DISEÑO PARA MÓVIL (CORREGIDO) --- */
+       /* --- AJUSTE RADICAL SOLO PARA MÓVIL --- */
         @media (max-width: 768px) {
-            .brand { top: 60px !important; }
-            .brand h1 { font-size: 12px !important; letter-spacing: 12px !important; text-indent: 12px !important; }
+            .brand { top: 45px !important; }
+            .brand h1 { font-size: 11px !important; letter-spacing: 10px !important; }
 
-            .vimeo-wrapper { height: 55vh !important; }
-            .vimeo-wrapper iframe { 
+            /* Contenedor al 55% de altura real */
+            .vimeo-wrapper { 
                 height: 55vh !important; 
-                width: 100vw !important; 
-                top: 0 !important; 
-                left: 0% !important; 
-                transform: translateX(-0%) !important; 
-                object-fit: cover !important; 
+                width: 100% !important;
+                position: absolute !important;
+                top: 0 !important;
+                overflow: hidden !important;
+                background: #000 !important;
+            }
+
+            /* El vídeo se ajusta para que el 100% quepa en ese 55vh */
+            .vimeo-wrapper iframe { 
+                width: 100vw !important;
+                height: 56.25vw !important; /* Mantiene la proporción 16:9 exacta */
+                min-height: 55vh !important; /* Se asegura de cubrir el alto */
+                object-fit: contain !important; /* EVITA EL ZOOM: Encaja el vídeo */
+                top: 50% !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%) !important;
             }
 
             .overlay { 
-                background: linear-gradient(to bottom, transparent 0%, transparent 35%, rgba(0,0,0,0.8) 50%, #000 70%, #000 100%) !important; 
-                padding-bottom: 60px !important; 
+                height: 100% !important;
+                justify-content: flex-end !important;
+                padding-bottom: 50px !important;
+                /* GRADIENTE ULTRA-SUAVE: Sin líneas de corte */
+                background: linear-gradient(to bottom, 
+                    rgba(0,0,0,0) 0%, 
+                    rgba(0,0,0,0) 30%, 
+                    rgba(0,0,0,0.2) 45%, 
+                    rgba(0,0,0,0.8) 52%, 
+                    rgba(0,0,0,1) 55%, 
+                    #000 56%, 
+                    #000 100%) !important; 
             }
 
-            .buttons { flex-direction: column !important; width: 80% !important; gap: 15px !important; }
-            .btn { padding: 20px !important; font-size: 14px !important; width: 100% !important; text-align: center !important; }
+            .buttons { 
+                flex-direction: column !important; 
+                width: 82% !important; 
+                gap: 12px !important; 
+            }
+
+            .btn { 
+                padding: 18px !important; 
+                font-size: 14px !important; 
+                width: 100% !important; 
+                text-align: center !important;
+                border: 1px solid rgba(255,255,255,0.2) !important;
+            }
         }
     </style>
 </head>

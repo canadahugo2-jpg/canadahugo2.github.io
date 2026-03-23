@@ -62,20 +62,49 @@
         .btn:hover { background: #fff; color: #000; border-color: #fff; }
 
         /* --- MÓVIL: CORRECCIÓN 70/30 SIN ZOOM --- */
-        @media (max-width: 768px) {
-            .brand { top: 7vh; }
-            .brand h1 { font-size: 0.7rem; letter-spacing: 10px; text-indent: 10px; }
+       @media (max-width: 768px) {
+            /* Ajuste del nombre */
+            .brand { top: 8vh; }
+            .brand h1 { font-size: 13px; letter-spacing: 12px; text-indent: 12px; }
 
+            /* VÍDEO: PROPORCIÓN 55/45 PARA QUITAR ZOOM */
             .vimeo-wrapper iframe { 
-                height: 70vh !important; 
-                /* Bajamos de 130vh a 110vh para "alejar" la cámara y quitar zoom */
-                width: 110vh !important; 
+                height: 55vh !important; /* Bajamos la altura para ganar angular */
+                width: 100vw !important;  /* Que ocupe el ancho de la pantalla */
                 top: 0; 
                 left: 50%; 
                 transform: translateX(-50%) !important; 
-                object-fit: contain; /* Ayuda a que quepa mejor */
-    
+                object-fit: cover; /* Mantiene la imagen centrada sin deformar */
             }
+
+            /* INTERFAZ Y EL BLEND (FUNDIDO SUAVE) */
+            .overlay { 
+                /* El negro empieza a subir desde el centro del vídeo para que no haya corte */
+                background: linear-gradient(to bottom, 
+                    transparent 0%, 
+                    transparent 30%, 
+                    rgba(0,0,0,0.6) 45%, 
+                    rgba(0,0,0,1) 58%, 
+                    #000 100%) !important; 
+                padding-bottom: 8vh;
+                justify-content: flex-end;
+            }
+
+            /* BOTONES EN MÓVIL */
+            .buttons { 
+                flex-direction: column; 
+                width: 80%; 
+                gap: 15px; 
+                margin-bottom: 20px;
+            }
+            .btn { 
+                padding: 18px !important; 
+                font-size: 14px !important; 
+                width: 100%; 
+                text-align: center;
+                border-color: rgba(255,255,255,0.3) !important;
+            }
+        
 
             .overlay { 
                 /* FUNDIDO QUE BLENDEA AL 100% */

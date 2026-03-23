@@ -3,34 +3,38 @@
 <head>
     <title>HUGO RETA</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body, html { width: 100%; height: 100%; overflow: hidden; background: #000; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
         
-        /* NOMBRE ARRIBA - ESTILO CRÉDITOS DE CINE */
+        /* NOMBRE ARRIBA - ESCALA PROFESIONAL PC */
         .brand {
             position: absolute;
-            top: 10vh;
+            top: 12vh;
             width: 100%;
             text-align: center;
-            z-index: 20;
+            z-index: 30;
         }
         .brand h1 {
             color: #fff;
-            font-size: 1.8rem; /* Tamaño con presencia */
+            font-size: 2.2rem; /* Letra más grande en PC */
             font-weight: 200;
-            letter-spacing: 25px; /* Interlineado horizontal muy alto */
+            letter-spacing: 30px; /* Interlineado de autor */
             text-transform: uppercase;
-            text-indent: 25px; /* Para centrar perfecto por el espaciado final */
+            text-indent: 30px;
             opacity: 0.9;
         }
 
         /* VIDEO */
         .vimeo-wrapper { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-        .vimeo-wrapper iframe { 
-            width: 100vw; height: 56.25vw; min-height: 100vh; min-width: 177.77vh; 
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+        
+        /* Pantalla completa en ordenador */
+        @media (min-width: 769px) {
+            .vimeo-wrapper iframe { 
+                width: 100vw; height: 56.25vw; min-height: 100vh; min-width: 177.77vh; 
+                position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+            }
         }
 
         /* INTERFAZ */
@@ -38,33 +42,48 @@
             position: relative; z-index: 10; width: 100%; height: 100%; 
             display: flex; flex-direction: column; align-items: center; 
             justify-content: flex-end; padding-bottom: 12vh;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, transparent 40%, rgba(0,0,0,0.6) 100%);
         }
         
-        /* BOTONES GRANDES PARA ORDENADOR */
-        .buttons { display: flex; gap: 40px; }
+        /* BOTONES GRANDES PC */
+        .buttons { display: flex; gap: 50px; margin-bottom: 20px; }
         .btn { 
-            padding: 22px 60px; /* Botones mucho más grandes */
+            padding: 25px 70px; /* Botones masivos y elegantes */
             border: 1.5px solid #fff; 
             color: #fff; 
             text-decoration: none; 
             text-transform: uppercase; 
-            letter-spacing: 5px; 
-            font-size: 1rem; /* Letra clara y grande */
-            border-radius: 60px; 
+            letter-spacing: 6px; 
+            font-size: 1.1rem; /* Letra grande y legible */
+            border-radius: 100px; 
             transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1); 
-            background: rgba(0,0,0,0.2); 
-            backdrop-filter: blur(10px);
+            background: rgba(0,0,0,0.1); 
+            backdrop-filter: blur(15px);
         }
-        .btn:hover { background: #fff; color: #000; transform: scale(1.05); }
+        .btn:hover { background: #fff; color: #000; transform: scale(1.08); }
 
-        /* AJUSTE MÓVIL */
+        /* --- MÓVIL: RECUPERANDO EL 70/30 Y EL BLEND --- */
         @media (max-width: 768px) {
-            .brand h1 { font-size: 1rem; letter-spacing: 12px; text-indent: 12px; }
-            .vimeo-wrapper iframe { height: 70vh; top: 0; transform: translateX(-50%); }
-            .overlay { background: linear-gradient(to bottom, transparent 50%, #000 100%); }
-            .buttons { flex-direction: column; width: 80%; gap: 20px; }
-            .btn { padding: 20px; font-size: 0.9rem; width: 100%; text-align: center; }
+            .brand { top: 8vh; }
+            .brand h1 { font-size: 1.1rem; letter-spacing: 14px; text-indent: 14px; }
+
+            .vimeo-wrapper iframe { 
+                height: 70vh; /* 70% de la pantalla */
+                width: 177.77vh; 
+                top: 0; left: 50%; transform: translateX(-50%); 
+            }
+
+            .overlay { 
+                /* DIFUMINADO / BLEND: El negro sube para fundirse con el video */
+                background: linear-gradient(to bottom, 
+                    rgba(0,0,0,0) 0%, 
+                    rgba(0,0,0,0) 45%, 
+                    rgba(0,0,0,0.7) 65%, 
+                    rgba(0,0,0,1) 85%,
+                    #000 100%); 
+                padding-bottom: 10vh;
+            }
+            .buttons { flex-direction: column; width: 85%; gap: 18px; }
+            .btn { padding: 22px; font-size: 1rem; width: 100%; text-align: center; }
         }
     </style>
 </head>

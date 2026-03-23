@@ -5,28 +5,28 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style>
+        /* --- 1. BASE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body, html { width: 100%; height: 100%; overflow: hidden; background: #000; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 
-        /* LOGO ARRIBA: PEQUEÑO Y MINIMALISTA */
+        /* --- 2. ORDENADOR (ESTILO ACTUAL - NO TOCADO) --- */
         .brand {
             position: absolute;
-            top: 10vh;
+            top: 80px;
             width: 100%;
             text-align: center;
             z-index: 100;
         }
         .brand h1 {
             color: #fff;
-            font-size: 0.9rem; /* Tamaño pequeño, tipo firma */
+            font-size: 16px;
             font-weight: 200;
-            letter-spacing: 15px; /* Interlineado elegante */
+            letter-spacing: 18px; 
             text-transform: uppercase;
-            text-indent: 15px;
-            opacity: 0.8;
+            text-indent: 18px;
+            opacity: 0.85;
         }
 
-        /* VÍDEO: CENTRADO TOTAL */
         .vimeo-wrapper { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
         .vimeo-wrapper iframe { 
             position: absolute;
@@ -36,41 +36,44 @@
             min-height: 100vh; min-width: 177.77vh;
         }
 
-        /* INTERFAZ */
         .overlay { 
-            position: relative; z-index: 10; width: 100%; height: 100%; 
-            display: flex; flex-direction: column; align-items: center; 
-            justify-content: flex-end; padding-bottom: 80px;
+            position: relative; 
+            z-index: 10; 
+            width: 100%; 
+            height: 100%; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: flex-end; 
+            padding-bottom: 90px;
         }
 
-        /* BOTONES: PEQUEÑOS PERO LEGIBLES (ESTILO PASTILLA) */
-        .buttons { display: flex; gap: 30px; }
+        .buttons { display: flex; gap: 40px; }
         .btn { 
-            padding: 12px 35px; /* Tamaño contenido, muy minimal */
-            border: 1px solid rgba(255,255,255,0.5); 
+            padding: 14px 40px; 
+            border: 1px solid rgba(255,255,255,0.4); 
             color: #fff; 
             text-decoration: none; 
             text-transform: uppercase; 
-            letter-spacing: 3px; 
-            font-size: 0.75rem; /* Letra pequeña pero nítida */
+            letter-spacing: 4px; 
+            font-size: 13px;
             font-weight: 300;
-            border-radius: 40px; 
+            border-radius: 50px; 
             background: rgba(0,0,0,0.1); 
             backdrop-filter: blur(10px);
-            transition: 0.4s ease;
+            transition: all 0.4s ease;
         }
         .btn:hover { background: #fff; color: #000; border-color: #fff; }
 
-      /* --- SOLO CAMBIOS PARA MÓVIL --- */
+        /* --- 3. MÓVIL (CORRECCIÓN FINAL) --- */
         @media (max-width: 768px) {
-            /* 1. Nombre sutil y arriba */
-            .brand { top: 50px !important; }
-            .brand h1 { font-size: 13px !important; letter-spacing: 12px !important; text-indent: 12px !important; }
+            .brand { top: 60px !important; }
+            .brand h1 { font-size: 12px !important; letter-spacing: 12px !important; text-indent: 12px !important; }
 
-            /* 2. El vídeo: bajamos altura para quitar zoom lateral */
-            .vimeo-wrapper { height: 50vh !important; } 
+            /* Vídeo al 55% de altura para quitar zoom lateral */
+            .vimeo-wrapper { height: 55vh !important; }
             .vimeo-wrapper iframe { 
-                height: 50vh !important; 
+                height: 55vh !important; 
                 width: 100vw !important; 
                 top: 0 !important; 
                 left: 50% !important; 
@@ -78,30 +81,32 @@
                 object-fit: cover !important;
             }
 
-            /* 3. El degradado: ahora es corto y no ensucia el vídeo */
+            /* Overlay con degradado corto para no ensuciar el vídeo */
             .overlay { 
                 background: linear-gradient(to bottom, 
-                    rgba(0,0,0,0) 0%, 
-                    rgba(0,0,0,0) 35%,      /* Vídeo totalmente limpio hasta aquí */
-                    rgba(0,0,0,0.4) 45%,    /* Empieza a oscurecer suave */
-                    rgba(0,0,0,1) 55%,      /* Negro total antes de los botones */
+                    transparent 0%, 
+                    transparent 35%, 
+                    rgba(0,0,0,0.8) 50%, 
+                    #000 65%, 
                     #000 100%) !important; 
                 padding-bottom: 60px !important;
-                justify-content: flex-end;
+                justify-content: flex-end !important;
             }
 
-            /* 4. Botones: verticales y fáciles de pulsar */
+            /* Botones verticales grandes y legibles */
             .buttons { 
                 flex-direction: column !important; 
                 width: 80% !important; 
                 gap: 15px !important; 
             }
+            
             .btn { 
-                padding: 18px !important; 
+                padding: 20px !important; 
                 font-size: 14px !important; 
                 width: 100% !important; 
                 text-align: center !important;
                 letter-spacing: 4px !important;
+                display: block !important;
             }
         }
     </style>

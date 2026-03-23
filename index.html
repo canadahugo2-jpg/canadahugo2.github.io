@@ -68,9 +68,13 @@
 
             .vimeo-wrapper iframe { 
                 height: 70vh !important; 
-                width: 125vh !important; /* Evita el zoom excesivo lateral */
-                top: 0; left: 50%; 
+                /* Bajamos de 130vh a 110vh para "alejar" la cámara y quitar zoom */
+                width: 110vh !important; 
+                top: 0; 
+                left: 50%; 
                 transform: translateX(-50%) !important; 
+                object-fit: contain; /* Ayuda a que quepa mejor */
+    
             }
 
             .overlay { 

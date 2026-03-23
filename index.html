@@ -47,21 +47,22 @@
                 transform: translate(-50%, -50%) !important;
             }
 
-           .overlay { 
+          .overlay { 
                 height: 100% !important;
                 display: flex !important;
                 flex-direction: column !important;
                 justify-content: flex-end !important;
                 align-items: center !important;
-                
-                /* SUBIMOS LOS BOTONES: Cambia el valor aquí */
                 padding-bottom: 120px !important; 
                 
+                /* DEGRADADO ULTRA-SUAVE: Paradas múltiples progresivas */
                 background: linear-gradient(to bottom, 
-                    transparent 0%, 
-                    transparent 35%, 
-                    rgba(0,0,0,0.8) 50%, 
-                    #000 65%, 
+                    rgba(0,0,0,0) 0%,      /* Totalmente transparente hasta aquí */
+                    rgba(0,0,0,0.1) 25%,   /* Un toque de negro súper tenue */
+                    rgba(0,0,0,0.4) 40%,   /* Empieza a oscurecer suavemente */
+                    rgba(0,0,0,0.8) 55%,   /* Ya está bastante oscuro, pero se ve */
+                    rgba(0,0,0,0.95) 70%,  /* Casi negro puro */
+                    #000 85%,              /* Negro sólido total */
                     #000 100%) !important; 
             }
 

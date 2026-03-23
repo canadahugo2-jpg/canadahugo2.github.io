@@ -61,56 +61,49 @@
         }
         .btn:hover { background: #fff; color: #000; border-color: #fff; }
 
-      
-            /* VÍDEO: PROPORCIÓN 55/45 PARA QUITAR ZOOM */
+      /* --- SOLO CAMBIOS PARA MÓVIL --- */
+        @media (max-width: 768px) {
+            /* 1. Nombre sutil y arriba */
+            .brand { top: 50px !important; }
+            .brand h1 { font-size: 13px !important; letter-spacing: 12px !important; text-indent: 12px !important; }
+
+            /* 2. El vídeo: bajamos altura para quitar zoom lateral */
+            .vimeo-wrapper { height: 50vh !important; } 
             .vimeo-wrapper iframe { 
-                height: 55vh !important; /* Bajamos la altura para ganar angular */
-                width: 100vw !important;  /* Que ocupe el ancho de la pantalla */
-                top: 0; 
-                left: 50%; 
+                height: 50vh !important; 
+                width: 100vw !important; 
+                top: 0 !important; 
+                left: 50% !important; 
                 transform: translateX(-50%) !important; 
-                object-fit: cover; /* Mantiene la imagen centrada sin deformar */
+                object-fit: cover !important;
             }
 
-            /* INTERFAZ Y EL BLEND (FUNDIDO SUAVE) */
+            /* 3. El degradado: ahora es corto y no ensucia el vídeo */
             .overlay { 
-                /* El negro empieza a subir desde el centro del vídeo para que no haya corte */
                 background: linear-gradient(to bottom, 
-                    transparent 0%, 
-                    transparent 30%, 
-                    rgba(0,0,0,0.6) 45%, 
-                    rgba(0,0,0,1) 58%, 
+                    rgba(0,0,0,0) 0%, 
+                    rgba(0,0,0,0) 35%,      /* Vídeo totalmente limpio hasta aquí */
+                    rgba(0,0,0,0.4) 45%,    /* Empieza a oscurecer suave */
+                    rgba(0,0,0,1) 55%,      /* Negro total antes de los botones */
                     #000 100%) !important; 
-                padding-bottom: 8vh;
+                padding-bottom: 60px !important;
                 justify-content: flex-end;
             }
 
-            /* BOTONES EN MÓVIL */
+            /* 4. Botones: verticales y fáciles de pulsar */
             .buttons { 
-                flex-direction: column; 
-                width: 80%; 
-                gap: 15px; 
-                margin-bottom: 20px;
+                flex-direction: column !important; 
+                width: 80% !important; 
+                gap: 15px !important; 
             }
             .btn { 
                 padding: 18px !important; 
                 font-size: 14px !important; 
-                width: 100%; 
-                text-align: center;
-                border-color: rgba(255,255,255,0.3) !important;
+                width: 100% !important; 
+                text-align: center !important;
+                letter-spacing: 4px !important;
             }
-        
-
-            .overlay { 
-                /* FUNDIDO QUE BLENDEA AL 100% */
-                background: linear-gradient(to bottom, 
-                    transparent 0%, 
-                    transparent 45%, 
-                    rgba(0,0,0,0.8) 65%, 
-                    #000 85%, 
-                    #000 100%); 
-                padding-bottom: 60px;
-            }
+        }
 
             .buttons { flex-direction: column; width: 75%; gap: 15px; }
             .btn { padding: 18px; font-size: 0.8rem; width: 100%; text-align: center; }

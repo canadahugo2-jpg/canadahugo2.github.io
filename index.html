@@ -4,12 +4,14 @@
     <title>HUGO RETA</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-        /* --- 1. BASE --- */
+        /* --- 1. CONFIGURACIÓN BASE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body, html { width: 100%; height: 100%; overflow: hidden; background: #000; font-family: 'Helvetica Neue', Arial, sans-serif; }
 
-        /* --- 2. DISEÑO PARA ORDENADOR (TU DISEÑO) --- */
+        /* --- 2. DISEÑO PARA ORDENADOR --- */
         .brand { position: absolute; top: 80px; width: 100%; text-align: center; z-index: 100; }
         .brand h1 { color: #fff; font-size: 16px; font-weight: 200; letter-spacing: 18px; text-transform: uppercase; text-indent: 18px; opacity: 0.85; }
 
@@ -21,78 +23,53 @@
         .btn { padding: 14px 40px; border: 1px solid rgba(255,255,255,0.4); color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 4px; font-size: 13px; font-weight: 300; border-radius: 50px; background: rgba(0,0,0,0.1); backdrop-filter: blur(10px); transition: 0.4s; }
         .btn:hover { background: #fff; color: #000; border-color: #fff; }
 
-       /* --- AJUSTE RADICAL SOLO PARA MÓVIL --- */
+        .social-icons { display: flex; gap: 30px; margin-top: 30px; justify-content: center; }
+        .social-icons a { color: rgba(255,255,255,0.4); font-size: 18px; text-decoration: none; transition: 0.3s; }
+
+        /* --- 3. DISEÑO ESPECÍFICO PARA MÓVIL --- */
         @media (max-width: 768px) {
-            .brand { top: 45px !important; }
-            .brand h1 { font-size: 11px !important; letter-spacing: 10px !important; }
+            .brand { top: 50px !important; }
+            .brand h1 { font-size: 11px !important; letter-spacing: 10px !important; text-indent: 10px !important; }
 
-            /* Contenedor al 55% de altura real */
-            .vimeo-wrapper { 
-                height: 55vh !important; 
-                width: 100% !important;
-                position: absolute !important;
-                top: 0 !important;
-                overflow: hidden !important;
-                background: #000 !important;
-            }
+            .vimeo-wrapper { height: 55vh !important; background: #000; }
+            .vimeo-wrapper iframe { height: 55vh !important; width: 100vw !important; top: 0 !important; left: 50% !important; transform: translateX(-50%) !important; object-fit: cover !important; }
 
-            /* El vídeo se ajusta para que el 100% quepa en ese 55vh */
-            .vimeo-wrapper iframe { 
-                width: 100vw !important;
-                height: 56.25vw !important; /* Mantiene la proporción 16:9 exacta */
-                min-height: 55vh !important; /* Se asegura de cubrir el alto */
-                object-fit: contain !important; /* EVITA EL ZOOM: Encaja el vídeo */
-                top: 50% !important;
-                left: 50% !important;
-                transform: translate(-50%, -50%) !important;
-            }
-
-          .overlay { 
-                height: 100% !important;
-                display: flex !important;
-                flex-direction: column !important;
-                justify-content: flex-end !important;
-                align-items: center !important;
-                padding-bottom: 120px !important; 
-                
-                /* DEGRADADO ULTRA-SUAVE: Paradas múltiples progresivas */
+            .overlay { 
+                padding-bottom: 120px !important; /* Los botones suben a donde marcaste */
                 background: linear-gradient(to bottom, 
-                    rgba(0,0,0,0) 0%,      /* Totalmente transparente hasta aquí */
-                    rgba(0,0,0,0.1) 25%,   /* Un toque de negro súper tenue */
-                    rgba(0,0,0,0.4) 40%,   /* Empieza a oscurecer suavemente */
-                    rgba(0,0,0,0.8) 55%,   /* Ya está bastante oscuro, pero se ve */
-                    rgba(0,0,0,0.95) 70%,  /* Casi negro puro */
-                    #000 85%,              /* Negro sólido total */
+                    rgba(0,0,0,0) 0%, 
+                    rgba(0,0,0,0) 35%, 
+                    rgba(0,0,0,0.3) 45%, 
+                    rgba(0,0,0,0.8) 52%, 
+                    #000 60%, 
                     #000 100%) !important; 
             }
 
-           .buttons { 
-                display: flex !important;
-                flex-direction: column !important; 
-                align-items: center !important; /* ESTO CENTRA LOS BOTONES */
-                width: 80% !important; 
-                gap: 15px !important; 
-                margin: 0 auto !important; /* ESTO CENTRA EL BLOQUE ENTERO */
-            }
-            .btn { 
-                padding: 18px !important; 
-                font-size: 14px !important; 
-                width: 100% !important; 
-                text-align: center !important;
-                border: 1px solid rgba(255,255,255,0.2) !important;
-            }
+            .buttons { flex-direction: column !important; width: 80% !important; gap: 15px !important; }
+            .btn { padding: 18px !important; font-size: 14px !important; width: 100% !important; text-align: center !important; }
+            
+            /* Iconos pequeños, sin color (gris suave) y centrados */
+            .social-icons { margin-top: 40px !important; gap: 35px !important; }
+            .social-icons a { font-size: 22px !important; color: rgba(255,255,255,0.4) !important; }
         }
     </style>
 </head>
 <body>
     <div class="brand"><h1>HUGO RETA</h1></div>
+    
     <div class="vimeo-wrapper">
         <iframe src="https://player.vimeo.com/video/1175946451?background=1&autoplay=1&loop=1&muted=1" frameborder="0" allow="autoplay; fullscreen"></iframe>
     </div>
+
     <div class="overlay">
         <div class="buttons">
             <a href="portfolio.html" class="btn">Portfolio</a>
             <a href="myself.html" class="btn">Myself</a>
+        </div>
+        
+        <div class="social-icons">
+            <a href="https://instagram.com/tu_usuario" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://tiktok.com/@tu_usuario" target="_blank"><i class="fab fa-tiktok"></i></a>
         </div>
     </div>
 </body>

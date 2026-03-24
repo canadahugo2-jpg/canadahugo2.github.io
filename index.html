@@ -26,51 +26,61 @@
         .social-icons { display: flex; gap: 30px; margin-top: 30px; }
         .social-icons a { color: rgba(255,255,255,0.4); font-size: 20px; text-decoration: none; }
 
-        /* --- 3. MÓVIL (IMAGEN ESTÁTICA Y DISEÑO LIMPIO) --- */
-        @media (max-width: 768px) {
-            /* Ocultamos el vídeo en móvil para usar la imagen de fondo */
-            .vimeo-wrapper { display: none !important; }
+      /* --- 3. MÓVIL (IMAGEN ESTÁTICA Y DISEÑO LIMPIO) --- */
+@media (max-width: 768px) {
+    .vimeo-wrapper { display: none !important; }
 
-            body {
-                /* REEMPLAZA 'tu-imagen.jpg' por el nombre de tu archivo */
-                background-image: url('DSC00518.jpg'); 
-                background-size: cover;
-                background-position: center center;
-                background-repeat: no-repeat;
-            }
+    body { 
+        background-image: url('DSC00518.jpg') !important; 
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+        background-attachment: fixed !important;
+    }
 
-            .brand { top: 50px !important; }
-            .brand h1 { font-size: 12px !important; letter-spacing: 10px !important; text-indent: 10px !important; }
+    .brand { top: 50px !important; }
+    .brand h1 { font-size: 12px !important; letter-spacing: 10px !important; text-indent: 10px !important; }
 
-            .overlay { 
-                height: 100vh !important;
-                /* Degradado muy sutil solo abajo para que resalten los botones */
-                background: linear-gradient(to bottom, rgba(0,0,0,0) 60%, rgba(0,0,0,0.4) 100%) !important;
-                padding-bottom: 60px !important; 
-            }
+    .overlay { 
+        height: 100vh !important;
+        /* SUBIMOS LOS BOTONES: cambiamos padding-bottom de 60px a 120px */
+        padding-bottom: 120px !important; 
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-end !important;
+        align-items: center !important;
+        background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.5) 100%) !important;
+    }
 
-            .buttons { 
-                flex-direction: column !important; 
-                width: 80% !important; 
-                gap: 15px !important; 
-            }
-            .btn { 
-                padding: 16px !important; 
-                font-size: 13px !important; 
-                width: 100% !important; 
-                text-align: center !important; 
-                background: rgba(0,0,0,0.3) !important;
-                backdrop-filter: blur(5px);
-            }
+    .buttons { 
+        flex-direction: column !important; 
+        width: 80% !important; 
+        gap: 15px !important; 
+        margin-bottom: 40px !important; /* Espacio entre botones y redes */
+    }
 
-            .social-icons { 
-                margin-top: 25px !important; 
-                gap: 40px !important; 
-                justify-content: center !important;
-                width: 100% !important;
-            }
-            .social-icons a { font-size: 24px !important; color: #fff !important; opacity: 0.8 !important; }
-        }
+    .btn { 
+        padding: 18px !important; 
+        font-size: 14px !important; 
+        width: 100% !important; 
+        text-align: center !important; 
+        background: rgba(0,0,0,0.2) !important;
+    }
+
+    /* REDES SOCIALES: Pequeñas, blancas y centradas abajo */
+    .social-icons { 
+        display: flex !important;
+        gap: 30px !important; 
+        justify-content: center !important;
+        width: 100% !important;
+    }
+
+    .social-icons a { 
+        font-size: 18px !important; /* Más pequeñas */
+        color: #ffffff !important;  /* Blanco puro */
+        opacity: 0.8 !important;    /* Un pelín de transparencia para que sea elegante */
+    }
+}
     </style>
 </head>
 <body>

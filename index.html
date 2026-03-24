@@ -5,12 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
         /* --- 1. BASE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body, html { width: 100%; height: 100%; overflow: hidden; background: #000; font-family: 'Helvetica Neue', Arial, sans-serif; }
 
-        /* --- 2. DISEÑO PARA ORDENADOR (LO DEJAMOS IGUAL) --- */
+        /* --- 2. ORDENADOR (ESTRICTAMENTE IGUAL) --- */
         .brand { position: absolute; top: 80px; width: 100%; text-align: center; z-index: 100; }
         .brand h1 { color: #fff; font-size: 16px; font-weight: 200; letter-spacing: 18px; text-transform: uppercase; text-indent: 18px; opacity: 0.85; }
 
@@ -22,45 +23,53 @@
         .btn { padding: 14px 40px; border: 1px solid rgba(255,255,255,0.4); color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 4px; font-size: 13px; font-weight: 300; border-radius: 50px; background: rgba(0,0,0,0.1); backdrop-filter: blur(10px); transition: 0.4s; }
         .btn:hover { background: #fff; color: #000; border-color: #fff; }
 
-        /* --- 3. AJUSTE MÓVIL: VÍDEO ALEJADO + ESPACIO NEGRO --- */
+        .social-icons { display: flex; gap: 30px; margin-top: 30px; }
+        .social-icons a { color: rgba(255,255,255,0.4); font-size: 20px; text-decoration: none; }
+
+        /* --- 3. MÓVIL (IMAGEN ESTÁTICA Y DISEÑO LIMPIO) --- */
         @media (max-width: 768px) {
-            .brand { top: 45px !important; }
-            .brand h1 { font-size: 11px !important; letter-spacing: 10px !important; text-indent: 10px !important; }
+            /* Ocultamos el vídeo en móvil para usar la imagen de fondo */
+            .vimeo-wrapper { display: none !important; }
 
-            /* El vídeo se ajusta para verse más ancho y menos alto, sin "zoom" vertical */
-            .vimeo-wrapper { 
-                height: 50vh !important; 
-                background: #000;
-                display: flex;
-                align-items: center;
-                overflow: hidden;
-            }
-            .vimeo-wrapper iframe { 
-                height: 100% !important; 
-                width: 100% !important; 
-                transform: scale(1.0) !important; /* QUITAMOS EL ZOOM para que se vea más a los lados */
-                object-fit: cover !important; 
+            body {
+                /* REEMPLAZA 'tu-imagen.jpg' por el nombre de tu archivo */
+                background-image: url(DSC00518.jpg); 
+                background-size: cover;
+                background-position: center center;
+                background-repeat: no-repeat;
             }
 
-            /* El overlay ya no es transparente sobre el vídeo, es un bloque sólido abajo */
+            .brand { top: 50px !important; }
+            .brand h1 { font-size: 12px !important; letter-spacing: 10px !important; text-indent: 10px !important; }
+
             .overlay { 
-                height: 50vh !important;
-                background: #000 !important; 
-                justify-content: center !important;
-                padding-bottom: 0 !important;
+                height: 100vh !important;
+                /* Degradado muy sutil solo abajo para que resalten los botones */
+                background: linear-gradient(to bottom, rgba(0,0,0,0) 60%, rgba(0,0,0,0.4) 100%) !important;
+                padding-bottom: 60px !important; 
             }
 
-            .buttons { flex-direction: column !important; width: 85% !important; gap: 12px !important; }
+            .buttons { 
+                flex-direction: column !important; 
+                width: 80% !important; 
+                gap: 15px !important; 
+            }
             .btn { 
-                padding: 18px !important; 
-                font-size: 14px !important; 
+                padding: 16px !important; 
+                font-size: 13px !important; 
                 width: 100% !important; 
                 text-align: center !important; 
-                border: 1px solid rgba(255,255,255,0.2) !important; 
+                background: rgba(0,0,0,0.3) !important;
+                backdrop-filter: blur(5px);
             }
 
-            .social-icons { display: flex !important; gap: 40px !important; margin-top: 30px !important; }
-            .social-icons a { color: rgba(255,255,255,0.4) !important; font-size: 22px !important; text-decoration: none !important; }
+            .social-icons { 
+                margin-top: 25px !important; 
+                gap: 40px !important; 
+                justify-content: center !important;
+                width: 100% !important;
+            }
+            .social-icons a { font-size: 24px !important; color: #fff !important; opacity: 0.8 !important; }
         }
     </style>
 </head>

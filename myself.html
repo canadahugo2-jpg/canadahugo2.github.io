@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>ABOUT | HUGO RETA</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* --- 1. BASE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: #000; 
+            color: #fff; 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 80px 20px;
+            min-height: 100vh;
+        }
+
+        /* Nav */
+        .nav-back { margin-bottom: 60px; }
+        .nav-back a { color: rgba(255,255,255,0.3); text-decoration: none; text-transform: uppercase; letter-spacing: 5px; font-size: 10px; transition: 0.4s; }
+        .nav-back a:hover { color: #fff; letter-spacing: 7px; }
+
+        /* --- 2. LAYOUT --- */
+        .profile-container {
+            max-width: 550px; /* Estrecho para que parezca una revista */
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            margin-bottom: 50px;
+            filter: grayscale(10%);
+            opacity: 0.9;
+        }
+
+        .about-text {
+            font-weight: 200; /* Fuente muy fina */
+            line-height: 2;   /* Mucho espacio entre líneas para elegancia */
+            letter-spacing: 0.3px;
+            color: rgba(255,255,255,0.7);
+            text-align: justify; /* Texto cuadrado y limpio */
+        }
+
+        .about-text h2 {
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            font-size: 16px;
+            margin-bottom: 40px;
+            font-weight: 300;
+            color: #fff;
+            text-align: center;
+        }
+
+        .about-text p {
+            font-size: 12px; /* FUENTE PEQUEÑA COMO PEDISTE */
+            margin-bottom: 25px;
+        }
+
+        .highlight {
+            color: #fff;
+            font-weight: 300;
+        }
+
+        .services-list {
+            margin-top: 50px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            text-align: center;
+        }
+
+        .services-list h3 {
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        /* --- 3. MOBILE --- */
+        @media (max-width: 768px) {
+            body { padding: 50px 30px; }
+            .about-text h2 { font-size: 14px; letter-spacing: 5px; }
+            .about-text p { font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav-back">
+        <a href="index.html">← HOME</a>
+    </div>
+
+    <div class="profile-container">
+        <img src="HUGO_ABOUT.jpg" alt="Hugo Reta" class="profile-pic">
+
+        <div class="about-text">
+            <h2>The Salt in the Soul</h2>
+            
+            <p>
+                Born and raised amidst the volcanic landscapes and the infinite Atlantic horizon of <span class="highlight">Lanzarote</span>, my relationship with the ocean is not just a preference, but a fundamental part of my identity. From a young age, the rhythmic motion of the waves and the raw, untamed beauty of the Canary Islands have shaped my aesthetic sensibilities and my understanding of light.
+            </p>
+
+            <p>
+                To me, photography and filmmaking are extensions of this lifelong observation. I seek to capture the silent strength of the coast and the fleeting moments where human emotion meets the vastness of the natural world. My work is a tribute to <span class="highlight">minimalism, texture, and the honesty of a single frame</span>. I don't just take pictures; I look for the narrative hidden within the silence of the sea.
+            </p>
+
+            <p>
+                Based in my homeland but driven by a global curiosity, I specialize in creating visual content that resonates on a deeper level. Whether it is through high-end fashion editorials, surf culture documentation, or commercial storytelling, I bring the <span class="highlight">intensity and clarity</span> of my island's heritage to every project I undertake.
+            </p>
+
+            <div class="services-list">
+                <h3>Services & Expertise</h3>
+                <p style="text-align: center; letter-spacing: 1px;">
+                    Creative Direction • Cinematography • Digital & Analog Photography • High-End Post-Production • Visual Storytelling • Ocean & Lifestyle Documentation
+                </p>
+            </div>
+            
+            <p style="margin-top: 60px; font-size: 10px; opacity: 0.4; letter-spacing: 3px; text-align: center;">
+                AVAILABLE FOR ASSIGNMENTS WORLDWIDE
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

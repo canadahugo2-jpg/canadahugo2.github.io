@@ -5,12 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
         /* --- 1. BASE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body, html { width: 100%; height: 100%; overflow: hidden; background: #000; font-family: 'Helvetica Neue', Arial, sans-serif; }
 
-        /* --- 2. DISEÑO PARA ORDENADOR --- */
+        /* --- 2. ORDENADOR (TU DISEÑO ORIGINAL) --- */
         .brand { position: absolute; top: 80px; width: 100%; text-align: center; z-index: 100; }
         .brand h1 { color: #fff; font-size: 16px; font-weight: 200; letter-spacing: 18px; text-transform: uppercase; text-indent: 18px; opacity: 0.85; }
 
@@ -22,47 +23,62 @@
         .btn { padding: 14px 40px; border: 1px solid rgba(255,255,255,0.4); color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 4px; font-size: 13px; font-weight: 300; border-radius: 50px; background: rgba(0,0,0,0.1); backdrop-filter: blur(10px); transition: 0.4s; }
         .btn:hover { background: #fff; color: #000; border-color: #fff; }
 
-        /* --- 3. AJUSTE MÓVIL (COPIADO DE LA FOTO) --- */
+        .social-icons { display: flex; gap: 30px; margin-top: 30px; }
+        .social-icons a { color: rgba(255,255,255,0.4); font-size: 20px; text-decoration: none; transition: 0.3s; }
+
+        /* --- 3. MÓVIL (50/50 Y CENTRADO TOTAL) --- */
         @media (max-width: 768px) {
-            .brand { top: 50px !important; }
+            .brand { top: 40px !important; }
             .brand h1 { font-size: 11px !important; letter-spacing: 10px !important; text-indent: 10px !important; }
 
+            /* Vídeo ocupa el 50% de arriba */
             .vimeo-wrapper { 
-                height: 55vh !important; 
+                height: 50vh !important; 
                 width: 100% !important; 
-                position: absolute !important; 
                 top: 0 !important; 
-                overflow: hidden !important;
+                position: absolute !important;
             }
-            
             .vimeo-wrapper iframe { 
                 height: 100% !important; 
                 width: 100% !important; 
                 top: 0 !important; 
                 left: 0 !important; 
-                transform: none !important; 
+                transform: none !important; /* QUITAMOS EL ZOOM EXCESIVO */
                 object-fit: cover !important; 
             }
 
+            /* Espacio negro ocupa el 50% de abajo */
             .overlay { 
-                height: 100vh !important;
-                padding-bottom: 55px !important; /* Misma posición de los botones en la foto */
-                /* DEGRADADO SUAVE (SIN LÍNEA AGRESIVA) */
-                background: linear-gradient(to bottom, 
-                    rgba(0,0,0,0) 0%, 
-                    rgba(0,0,0,0) 30%, 
-                    rgba(0,0,0,0.1) 40%, 
-                    rgba(0,0,0,0.5) 48%, 
-                    rgba(0,0,0,0.9) 53%, 
-                    #000 55%, 
-                    #000 100%) !important; 
+                height: 50vh !important; 
+                top: 50vh !important; 
+                position: absolute !important;
+                padding-bottom: 0 !important; 
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important; /* CENTRADO VERTICAL EN EL NEGRO */
+                align-items: center !important;    /* CENTRADO HORIZONTAL EN EL NEGRO */
+                background: #000 !important;       /* Negro puro, sin degradados raros */
             }
 
-            .buttons { flex-direction: column !important; width: 80% !important; gap: 12px !important; }
-            .btn { padding: 18px !important; font-size: 14px !important; width: 100% !important; text-align: center !important; }
+            .buttons { 
+                flex-direction: column !important; 
+                width: 80% !important; 
+                gap: 15px !important; 
+            }
+            .btn { 
+                padding: 16px !important; 
+                font-size: 13px !important; 
+                width: 100% !important; 
+                text-align: center !important; 
+            }
 
-            .social-icons { display: flex !important; gap: 35px !important; margin-top: 30px !important; }
-            .social-icons a { color: rgba(255,255,255,0.4) !important; font-size: 22px !important; text-decoration: none !important; }
+            .social-icons { 
+                margin-top: 25px !important; 
+                gap: 40px !important; 
+            }
+            .social-icons a { 
+                font-size: 24px !important; 
+            }
         }
     </style>
 </head>

@@ -1,1 +1,84 @@
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+    <title>PORTFOLIO | HUGO RETA</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* --- 1. BASE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #000; font-family: 'Helvetica Neue', Arial, sans-serif; padding: 40px 20px; }
 
+        /* Título o Botón de volver (opcional) */
+        .nav-back { margin-bottom: 40px; text-align: center; }
+        .nav-back a { color: rgba(255,255,255,0.5); text-decoration: none; text-transform: uppercase; letter-spacing: 4px; font-size: 12px; transition: 0.3s; }
+        .nav-back a:hover { color: #fff; }
+
+        /* --- 2. EL MOSAICO (MASONRY) --- */
+        .gallery {
+            /* Definimos el número de columnas */
+            column-count: 3; 
+            column-gap: 15px; /* Espacio entre columnas */
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 15px; /* Espacio vertical entre fotos */
+            overflow: hidden; /* Para que el zoom no se salga del borde */
+            background: #111;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Efecto suave */
+        }
+
+        /* --- 3. EFECTO ZOOM --- */
+        .gallery-item:hover img {
+            transform: scale(1.08); /* Zoom ligero del 8% */
+        }
+
+        /* --- 4. AJUSTE PARA MÓVIL --- */
+        @media (max-width: 1024px) {
+            .gallery { column-count: 2; } /* 2 columnas en tablets */
+        }
+
+        @media (max-width: 600px) {
+            .gallery { column-count: 1; } /* 1 columna en móviles para ver bien las fotos */
+            body { padding: 20px 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav-back">
+        <a href="index.html">← Back to Home</a>
+    </div>
+
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="DSC00518.jpg" alt="Hugo Reta Photography">
+        </div>
+
+        <div class="gallery-item">
+            <img src="otra-foto-vertical.jpg" alt="Hugo Reta Photography">
+        </div>
+
+        <div class="gallery-item">
+            <img src="foto-horizontal.jpg" alt="Hugo Reta Photography">
+        </div>
+
+        <div class="gallery-item">
+            <img src="tu-imagen-4.jpg" alt="Hugo Reta Photography">
+        </div>
+        
+        </div>
+
+</body>
+</html>

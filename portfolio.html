@@ -88,6 +88,19 @@
     transform: none !important; /* Fuerza al contenido a quedarse estático */
     transition: none !important; /* Quita cualquier transición previa que pueda molestar */
 }
+        .video-container-43 {
+    position: relative;
+    padding-bottom: 75%; /* Esta es la clave para el 4:3 */
+    height: 0;
+}
+
+        .video-container-43 iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
     </style>
 </head>
 <body>
@@ -118,6 +131,10 @@
             <img src="IMG_3667.JPG">
         </div>
 
+        <div class="gallery-item video-container-43">
+    <iframe src="https://player.vimeo.com/video/1187483675?background=1&autoplay=1&loop=1&byline=0&title=0" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+</div>
+        
         <div class="gallery-item">
             <img src="IMG_3666.JPG">
         </div>

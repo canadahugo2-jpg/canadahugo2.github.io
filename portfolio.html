@@ -68,17 +68,25 @@
     height: 100%;
     object-fit: cover; /* Esto es clave: hace que el video se adapte */
 }
-        /* Esto hace que el bloque entero crezca */
+/* 1. Preparamos el contenedor para que pueda crecer suavemente */
 .gallery-item {
-    transition: transform 0.4s ease, box-shadow 0.4s ease; /* Transición suave */
-    position: relative; /* Necesario para que el z-index funcione */
+    transition: transform 0.4s ease, box-shadow 0.4s ease !important;
+    position: relative;
+    overflow: hidden; /* Esto es vital: corta el contenido si se sale */
 }
 
-/* El efecto al pasar el cursor */
+/* 2. El zoom: Solo agranda la cuadrícula (el marco) */
 .gallery-item:hover {
-    transform: scale(1.05); /* El bloque entero se agranda un 5% */
-    z-index: 10; /* Hace que el bloque pase "por encima" de los demás */
-    box-shadow: 0 15px 30px rgba(0,0,0,0.4); /* Le da profundidad para que parezca que flota */
+    transform: scale(1.05) !important;
+    z-index: 100 !important;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
+
+/* 3. Bloqueo: Evita que la imagen o video interior hagan zoom */
+.gallery-item img, 
+.gallery-item iframe {
+    transform: none !important; /* Fuerza al contenido a quedarse estático */
+    transition: none !important; /* Quita cualquier transición previa que pueda molestar */
 }
     </style>
 </head>

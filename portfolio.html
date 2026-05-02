@@ -89,26 +89,32 @@
     transition: none !important; /* Quita cualquier transición previa que pueda molestar */
 }
 
-        /* --- AJUSTES EXCLUSIVOS PARA MÓVIL --- */
+/* --- AJUSTE PARA MÓVIL: DOS COLUMNAS ORGÁNICAS --- */
 @media (max-width: 767px) {
     .gallery {
-        display: grid !important;
-        /* Crea 2 columnas iguales */
-        grid-template-columns: repeat(2, 1fr) !important; 
-        gap: 10px !important; /* Espacio más pequeño para que quepa todo */
-        padding: 10px !important;
-        column-count: auto !important; /* Desactiva el modo columnas antiguo si lo tenías */
+        /* Activamos las dos columnas */
+        column-count: 2 !important; 
+        /* El espacio entre las dos columnas */
+        column-gap: 15px !important; 
+        padding: 15px !important;
+        display: block !important; /* Desactivamos el grid para permitir alturas libres */
     }
 
     .gallery-item {
-        /* Mantiene el aspecto cuadrado para que el mosaico sea simétrico */
-        aspect-ratio: 1 / 1 !important; 
-        margin-bottom: 0 !important; /* El gap del grid ya se encarga del espacio */
+        /* Evita que una imagen se parta entre dos columnas */
+        break-inside: avoid !important; 
+        display: inline-block !important;
+        width: 100% !important;
+        /* Espacio uniforme hacia abajo */
+        margin-bottom: 15px !important; 
+        /* Quitamos el aspecto cuadrado para que se vea la foto real */
+        aspect-ratio: auto !important; 
     }
 
-    /* Opcional: Pequeño desorden visual para que no sea una rejilla aburrida */
-    .gallery-item:nth-child(even) {
-        margin-top: 15px !important;
+    .gallery-item img, 
+    .gallery-item iframe {
+        height: auto !important; /* El video/foto manda en la altura */
+        object-fit: contain !important; /* No recorta la imagen */
     }
 
     </style>

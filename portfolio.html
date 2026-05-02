@@ -88,6 +88,29 @@
     transform: none !important; /* Fuerza al contenido a quedarse estático */
     transition: none !important; /* Quita cualquier transición previa que pueda molestar */
 }
+
+        /* --- AJUSTES EXCLUSIVOS PARA MÓVIL --- */
+@media (max-width: 767px) {
+    .gallery {
+        display: grid !important;
+        /* Crea 2 columnas iguales */
+        grid-template-columns: repeat(2, 1fr) !important; 
+        gap: 10px !important; /* Espacio más pequeño para que quepa todo */
+        padding: 10px !important;
+        column-count: auto !important; /* Desactiva el modo columnas antiguo si lo tenías */
+    }
+
+    .gallery-item {
+        /* Mantiene el aspecto cuadrado para que el mosaico sea simétrico */
+        aspect-ratio: 1 / 1 !important; 
+        margin-bottom: 0 !important; /* El gap del grid ya se encarga del espacio */
+    }
+
+    /* Opcional: Pequeño desorden visual para que no sea una rejilla aburrida */
+    .gallery-item:nth-child(even) {
+        margin-top: 15px !important;
+    }
+
     </style>
 </head>
 <body>

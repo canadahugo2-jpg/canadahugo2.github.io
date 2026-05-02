@@ -89,32 +89,39 @@
     transition: none !important; /* Quita cualquier transición previa que pueda molestar */
 }
 
-/* --- AJUSTE PARA MÓVIL: DOS COLUMNAS ORGÁNICAS --- */
+/* --- AJUSTE PARA MÓVIL REPARADO (SIN CORTES) --- */
 @media (max-width: 767px) {
     .gallery {
-        /* Activamos las dos columnas */
         column-count: 2 !important; 
-        /* El espacio entre las dos columnas */
         column-gap: 15px !important; 
         padding: 15px !important;
-        display: block !important; /* Desactivamos el grid para permitir alturas libres */
+        display: block !important; 
     }
 
     .gallery-item {
-        /* Evita que una imagen se parta entre dos columnas */
         break-inside: avoid !important; 
         display: inline-block !important;
         width: 100% !important;
-        /* Espacio uniforme hacia abajo */
         margin-bottom: 15px !important; 
-        /* Quitamos el aspecto cuadrado para que se vea la foto real */
-        aspect-ratio: auto !important; 
     }
 
-    .gallery-item img, 
+    /* Esta es la clave: Si el item tiene un iframe (video), le damos altura */
+    .gallery-item:has(iframe) {
+        aspect-ratio: 16 / 9 !important; /* Ajusta a 4/3 si tus videos son cuadrados */
+        background: black; /* Evita destellos blancos mientras carga */
+    }
+
+    .gallery-item img {
+        height: auto !important; 
+        width: 100% !important;
+        display: block !important;
+        object-fit: contain !important;
+    }
+
     .gallery-item iframe {
-        height: auto !important; /* El video/foto manda en la altura */
-        object-fit: contain !important; /* No recorta la imagen */
+        width: 100% !important;
+        height: 100% !important;
+        display: block !important;
     }
 
     </style>

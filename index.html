@@ -26,16 +26,36 @@
         .social-icons { display: flex; gap: 30px; margin-top: 30px; }
         .social-icons a { color: rgba(255,255,255,0.4); font-size: 20px; text-decoration: none; }
 
+        .mobile-video { display: none; } /* Por defecto el de móvil está escondido */
       /* --- 3. MÓVIL (IMAGEN ESTÁTICA Y DISEÑO LIMPIO) --- */
 @media (max-width: 768px) {
-    .vimeo-wrapper { display: none !important; }
-
-    body { 
-        background-image: url('DSC00518 (1).jpg') !important; 
-        background-size: cover !important;
-        background-position: center center !important;
-        background-repeat: no-repeat !important;
-        background-attachment: fixed !important;
+    .desktop-video { display: none !important; } /* Escondemos el de PC */
+    
+    .mobile-video { 
+        display: block !important; /* Mostramos el de móvil */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: -1;
+    }
+   
+    .mobile-video iframe {
+        width: 100vw;
+        height: 56.25vw;
+        min-height: 100vh;
+        min-width: 177.77vh;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+    }
+    
+    body {
+        background-image: none !important; /* Esto quita la foto que tenías antes */
+        background-color: #000;
     }
 
     .brand { top: 50px !important; }
@@ -86,10 +106,14 @@
 <body>
     <div class="brand"><h1>HUGO RETA</h1></div>
     
-    <div class="vimeo-wrapper">
+    <div class="vimeo-wrapper desktop-video">
         <iframe src="https://player.vimeo.com/video/1187447651?background=1&autoplay=1&loop=1&muted=1" frameborder="0" allow="autoplay; fullscreen"></iframe>
     </div>
 
+    <div class="vimeo-wrapper mobile-video">
+    <iframe src="https://player.vimeo.com/video/1188660692?background=1&autoplay=1&loop=1&muted=1" frameborder="0" allow="autoplay; fullscreen"></iframe>
+</div>
+    
     <div class="overlay">
         <div class="buttons">
             <a href="portfolio.html" class="btn">Portfolio</a>

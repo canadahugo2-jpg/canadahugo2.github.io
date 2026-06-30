@@ -1,231 +1,195 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>PORTFOLIO | HUGO RETA</title>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Hugo Reta</title>
     <style>
-        /* --- 1. BASE --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: #000; font-family: 'Helvetica Neue', Arial, sans-serif; padding: 40px 20px; }
+        /* ESTILOS EXCLUSIVOS PARA TU PORTFOLIO - NO TOCAN EL RESTO DE LA WEB */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        /* Título o Botón de volver (opcional) */
-        .nav-back { margin-bottom: 40px; text-align: center; }
-        .nav-back a { color: rgba(255,255,255,0.5); text-decoration: none; text-transform: uppercase; letter-spacing: 4px; font-size: 12px; transition: 0.3s; }
-        .nav-back a:hover { color: #fff; }
+        body {
+            background-color: #000000; /* Fondo negro puro */
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            overflow-x: hidden;
+            padding-bottom: 80px; /* Espacio limpio al final de la página */
+        }
 
-        /* --- 2. EL MOSAICO (MASONRY) --- */
-        .gallery {
-            /* Definimos el número de columnas */
-            column-count: 3; 
-            column-gap: 15px; /* Espacio entre columnas */
+        /* CABECERA MINIMALISTA (Botón de volver arriba centrado como en tu imagen) */
+        .portfolio-nav {
             width: 100%;
-            max-width: 1400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+        }
+
+        .back-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .back-link:hover {
+            opacity: 1;
+        }
+
+        /* CONTENEDOR PRINCIPAL DEL FEED (Ocupa casi toda la pantalla de ancho) */
+        .portfolio-feed {
+            width: 92%; /* Deja márgenes elegantes a los lados */
+            max-width: 1600px;
             margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 50px; /* Separación limpia entre un proyecto y otro */
         }
 
-        .gallery-item {
-            display: inline-block;
+        /* FILA DE PROYECTO INDIVIDUAL (Uno por línea) */
+        .project-row {
             width: 100%;
-            margin-bottom: 15px; /* Espacio vertical entre fotos */
-            overflow: hidden; /* Para que el zoom no se salga del borde */
-            background: #111;
-            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            position: relative;
         }
 
-        .gallery-item img {
+        /* CONTENEDOR DE LA PORTADA (Formato Panorámico Anamórfico de Cine 21:9) */
+        .project-card {
             width: 100%;
+            aspect-ratio: 21 / 9; /* Mucho más alargado que 16:9, formato puramente cinematográfico */
+            overflow: hidden;
+            position: relative;
+            background-color: #0b0b0b;
+        }
+
+        /* Imágenes o vídeos de portada ocupando todo el espacio */
+        .project-media {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             display: block;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Efecto suave */
+            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* --- 4. AJUSTE PARA MÓVIL --- */
-        @media (max-width: 1024px) {
-            .gallery { column-count: 2; } /* 2 columnas en tablets */
+        /* Sutil efecto visual premium al pasar el ratón por encima */
+        .project-card:hover .project-media {
+            transform: scale(1.015);
         }
 
-        @media (max-width: 600px) {
-            .gallery { column-count: 1; } /* 1 columna en móviles para ver bien las fotos */
-            body { padding: 20px 10px; }
+        /* Degradado oscuro sutil en la esquina superior para asegurar que el texto blanco se lea siempre */
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+            z-index: 2;
+            pointer-events: none;
         }
-        .gallery-item {
-    width: 100%;
-    height: 100%; /* Asegura que todos los contenedores sean iguales */
-    overflow: hidden;
-}
 
-.video-container {
-    position: relative;
-    padding-bottom: 56.25%; /* Esto mantiene la proporción 16:9 de Vimeo */
-    height: 0;
-}
+        /* TIPOGRAFÍA EDITORIAL (Idéntica al estilo flotante del vídeo de referencia) */
+        .project-info {
+            position: absolute;
+            top: 35px;
+            left: 35px;
+            z-index: 3;
+            pointer-events: none;
+            max-width: 80%;
+        }
 
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Esto es clave: hace que el video se adapte */
-}
-/* 1. Preparamos el contenedor para que pueda crecer suavemente */
-.gallery-item {
-    transition: transform 0.4s ease, box-shadow 0.4s ease !important;
-    position: relative;
-    overflow: hidden; /* Esto es vital: corta el contenido si se sale */
-}
+        .project-title {
+            font-family: "Didot", "Playfair Display", "Georgia", serif; /* Tipografía Serif elegante */
+            font-size: 24px;
+            font-weight: 400;
+            color: #ffffff;
+            letter-spacing: 0.01em;
+            line-height: 1.2;
+        }
 
-/* 2. El zoom: Solo agranda la cuadrícula (el marco) */
-.gallery-item:hover {
-    transform: scale(1.05) !important;
-    z-index: 100 !important;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-}
+        /* AJUSTES PERFECTOS PARA MÓVILES (Para que no quede una tira demasiado estrecha) */
+        @media (max-width: 768px) {
+            .portfolio-nav {
+                padding: 35px 20px;
+            }
+            
+            .portfolio-feed {
+                width: 95%;
+                gap: 30px;
+            }
 
-/* 3. Bloqueo: Evita que la imagen o video interior hagan zoom */
-.gallery-item img, 
-.gallery-item iframe {
-    transform: none !important; /* Fuerza al contenido a quedarse estático */
-    transition: none !important; /* Quita cualquier transición previa que pueda molestar */
-}
+            .project-card {
+                aspect-ratio: 16 / 7.5; /* Adaptación de proporción para pantallas verticales */
+            }
 
-/* --- AJUSTE PARA MÓVIL REPARADO (SIN CORTES) --- */
-@media (max-width: 767px) {
-    .gallery {
-        column-count: 2 !important; 
-        column-gap: 15px !important; 
-        padding: 15px !important;
-        display: block !important; 
-    }
+            .project-info {
+                top: 20px;
+                left: 20px;
+                max-width: 90%;
+            }
 
-    .gallery-item {
-        break-inside: avoid !important; 
-        display: inline-block !important;
-        width: 100% !important;
-        margin-bottom: 15px !important; 
-    }
-
-    /* Esta es la clave: Si el item tiene un iframe (video), le damos altura */
-    .gallery-item:has(iframe) {
-        aspect-ratio: 16 / 9 !important; /* Ajusta a 4/3 si tus videos son cuadrados */
-        background: black; /* Evita destellos blancos mientras carga */
-    }
-
-    .gallery-item img {
-        height: auto !important; 
-        width: 100% !important;
-        display: block !important;
-        object-fit: contain !important;
-    }
-
-    .gallery-item iframe {
-        width: 100% !important;
-        height: 100% !important;
-        display: block !important;
-    }
-
+            .project-title {
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <div class="nav-back">
-        <a href="index.html">← Back to Home</a>
-    </div>
+    <nav class="portfolio-nav">
+        <a href="index.html" class="back-link">← Back to Home</a>
+    </nav>
 
-    <div class="gallery">
-        <div class="gallery-item">
-            <img src="IMG_3665.JPG">
-        </div>
-
-        <div class="gallery-item">
-            <img src="IMG_3671.JPG">
-        </div>
-
-           <div class="gallery-item video-container">
-    <iframe 
-        src="https://player.vimeo.com/video/1187473406?background=1&autoplay=1&loop=1&byline=0&title=0" 
-        frameborder="0" 
-        allow="autoplay; fullscreen" 
-        allowfullscreen>
-    </iframe>
-</div>
+    <main class="portfolio-feed">
         
-        <div class="gallery-item">
-            <img src="IMG_3667.JPG">
-        </div>
+        <article class="project-row">
+            <div class="project-card">
+                <video class="project-media" autoplay muted loop playsinline>
+                    <source src="Colourgrading.mp4" type="video/mp4">
+                </video>
+                <div class="project-info">
+                    <h2 class="project-title">The Art of Colourgrading — Fuerteventura</h2>
+                </div>
+            </div>
+        </article>
 
-        <div class="gallery-item">
-            <img src="IMG_3666.JPG">
-        </div>
+        <article class="project-row">
+            <div class="project-card">
+                <img class="project-media" src="proyecto2.jpg" alt="Estudio Bruma">
+                <div class="project-info">
+                    <h2 class="project-title">Estudio Bruma — Primavera Sound — Pull & Bear</h2>
+                </div>
+            </div>
+        </article>
 
-          <div class="gallery-item video-container">
-    <iframe 
-        src="https://player.vimeo.com/video/1188651178?background=1&autoplay=1&loop=1&byline=0&title=0" 
-        frameborder="0" 
-        allow="autoplay; fullscreen" 
-        allowfullscreen>
-    </iframe>
-</div>
-        
-        <div class="gallery-item">
-            <img src="IMG_3673.JPG">
-        </div>
+        <article class="project-row">
+            <div class="project-card">
+                <img class="project-media" src="proyecto3.jpg" alt="Specialized">
+                <div class="project-info">
+                    <h2 class="project-title">Performance Core — Specialized Campaign</h2>
+                </div>
+            </div>
+        </article>
 
-        <div class="gallery-item">
-            <img src="IMG_4177.JPG">
-        </div>
-        
-           <div class="gallery-item">
-            <img src="IMG_3674.JPG">
-        </div>
+        <article class="project-row">
+            <div class="project-card">
+                <img class="project-media" src="proyecto4.jpg" alt="Adidas">
+                <div class="project-info">
+                    <h2 class="project-title">Adidas Originals — Street Culture</h2>
+                </div>
+            </div>
+        </article>
 
-         <div class="gallery-item video-container">
-    <iframe 
-        src="https://player.vimeo.com/video/1187470916?background=1&autoplay=1&loop=1&byline=0&title=0" 
-        frameborder="0" 
-        allow="autoplay; fullscreen" 
-        allowfullscreen>
-    </iframe>
-</div>        
-        <div class="gallery-item">
-            <img src="IMG_3672.JPG">
-        </div>
-
-        <div class="gallery-item video-container">
-    <iframe 
-        src="https://player.vimeo.com/video/1187459545?background=1&autoplay=1&loop=1&byline=0&title=0" 
-        frameborder="0" 
-        allow="autoplay; fullscreen" 
-        allowfullscreen>
-    </iframe>
-</div>
-        
-        <div class="gallery-item">
-            <img src="IMG_3668.JPG">
-        </div>  
-
-        <div class="gallery-item">
-            <img src="IMG_3670.JPG">
-        </div>
-
-        <div class="gallery-item">
-            <img src="IMG_3669.JPG">
-        </div>
-
-        <div class="gallery-item video-container">
-    <iframe 
-        src="https://player.vimeo.com/video/1187467736?background=1&autoplay=1&loop=1&byline=0&title=0" 
-        frameborder="0" 
-        allow="autoplay; fullscreen" 
-        allowfullscreen>
-    </iframe>
-</div>
-        
-        <div class="gallery-item">
-            <img src="IMG_3664.JPG">
-        </div>
-        
-        </div>
+    </main>
 
 </body>
 </html>

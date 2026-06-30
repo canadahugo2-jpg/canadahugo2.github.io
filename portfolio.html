@@ -82,25 +82,25 @@
 
         /* CAPA OSCURA CON DEGRADADOS TOP/BOTTOM Y CONTENEDOR DEL TEXTO */
         .project-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /* Degradado leve arriba (0% a 25%) y abajo (75% a 100%) */
-            background: linear-gradient(to bottom, 
-                rgba(0, 0, 0, 0.5) 0%, 
-                rgba(0, 0, 0, 0) 25%, 
-                rgba(0, 0, 0, 0) 75%, 
-                rgba(0, 0, 0, 0.5) 100%
-            );
-            opacity: 0; /* Oculto por defecto */
-            transition: opacity 0.5s ease;
-            z-index: 2;
-        }
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start; /* Cambiado de center a flex-start */
+    align-items: flex-start;     /* Cambiado de center a flex-start */
+    padding: 35px;               /* Añadido para separarlo elegantemente del borde */
+    background: linear-gradient(to bottom, 
+        rgba(0, 0, 0, 0.5) 0%, 
+        rgba(0, 0, 0, 0) 25%, 
+        rgba(0, 0, 0, 0) 75%, 
+        rgba(0, 0, 0, 0.5) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 2;
+}
 
         /* EFECTO HOVER 2: MOSTRAR TEXTO Y DEGRADADOS */
         .project-card:hover .project-overlay {

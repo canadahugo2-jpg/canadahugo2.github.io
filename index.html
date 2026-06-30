@@ -1,186 +1,129 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>HUGO RETA</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
-        /* CSS AUTO-CONTENIDO - NO AFECTA A NINGÚN OTRO ARCHIVO DE TU WEB */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* --- 1. BASE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { width: 100%; height: 100%; overflow: hidden; background: #000; font-family: 'Helvetica Neue', Arial, sans-serif; }
 
-        body, html {
-            background-color: #000000;
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            overflow: hidden;
-            width: 100%;
-            height: 100%;
-        }
+        /* --- 2. ORDENADOR (ESTRICTAMENTE IGUAL) --- */
+        .brand { position: absolute; top: 80px; width: 100%; text-align: center; z-index: 100; }
+        .brand h1 { color: #fff; font-size: 16px; font-weight: 200; letter-spacing: 18px; text-transform: uppercase; text-indent: 18px; opacity: 0.85; }
 
-        /* NAVEGACIÓN FIJA (Logo izquierda, botón minimalista derecha) */
-        .portfolio-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 30px 40px;
-            z-index: 100;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%);
-        }
+        .vimeo-wrapper { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+        .vimeo-wrapper iframe { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100vw; height: 56.25vw; min-height: 100vh; min-width: 177.77vh; }
 
-        .portfolio-logo {
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: #ffffff;
-            text-decoration: none;
-        }
+        .overlay { position: relative; z-index: 10; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 90px; }
+        .buttons { display: flex; gap: 40px; width: auto; }
+        .btn { padding: 14px 40px; border: 1px solid rgba(255,255,255,0.4); color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 4px; font-size: 13px; font-weight: 300; border-radius: 50px; background: rgba(0,0,0,0.1); backdrop-filter: blur(10px); transition: 0.4s; }
+        .btn:hover { background: #fff; color: #000; border-color: #fff; }
 
-        /* Botón de dos líneas finas que vuelve al index */
-        .portfolio-menu-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
+        .social-icons { display: flex; gap: 30px; margin-top: 30px; }
+        .social-icons a { color: rgba(255,255,255,0.4); font-size: 20px; text-decoration: none; }
 
-        .portfolio-menu-btn span {
-            display: block;
-            width: 22px;
-            height: 2px;
-            background-color: #ffffff;
-        }
+        .mobile-video { display: none; } /* Por defecto el de móvil está escondido */
+      /* --- 3. MÓVIL (IMAGEN ESTÁTICA Y DISEÑO LIMPIO) --- */
+@media (max-width: 768px) {
+    .desktop-video { display: none !important; } /* Escondemos el de PC */
 
-        /* CONTENEDOR CON SCROLL IMANTADO (PANTALLA COMPLETA) */
-        .portfolio-scroll-container {
-            width: 100%;
-            height: 100dvh; /* dvh clava la pantalla en móviles sin fallos de barra */
-            overflow-y: scroll;
-            scroll-snap-type: y mandatory;
-            scroll-behavior: smooth;
-            scrollbar-width: none; /* Oculta barra en Firefox */
-        }
+    .mobile-video { 
+        display: block !important; /* Mostramos el de móvil */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: -1;
+        z-index: 1;
 
-        .portfolio-scroll-container::-webkit-scrollbar {
-            display: none; /* Oculta barra en Chrome/Safari */
-        }
+    .mobile-video iframe {
+        width: 100vw;
+        height: 56.25vw;
+        min-height: 100vh;
+        min-width: 177.77vh;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+    }
 
-        /* SECCIONES VERTICALES RECTANGULARES */
-        .portfolio-page {
-            position: relative;
-            width: 100%;
-            height: 100dvh;
-            scroll-snap-align: start;
-            scroll-snap-stop: always;
-            overflow: hidden;
-        }
+    body {
+        background-image: none !important; /* Esto quita la foto que tenías antes */
+        background-color: transparent !important;
+    }
+ }
+    .brand { top: 50px !important; }
+    .brand h1 { font-size: 12px !important; letter-spacing: 10px !important; text-indent: 10px !important; }
 
-        /* Ajuste de clips y fotos estilo Cine (Edge-to-Edge) */
-        .portfolio-media {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
-        }
+    .overlay { 
+        height: 100vh !important;
+        /* SUBIMOS LOS BOTONES: cambiamos padding-bottom de 60px a 120px */
+        padding-bottom: 160px !important; 
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-end !important;
+        align-items: center !important;
+        background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.5) 100%) !important;
+    }
 
-        /* TEXTO EDITORIAL (Tipografía Serif clásica como la referencia) */
-        .portfolio-title-wrapper {
-            position: absolute;
-            top: 120px; 
-            left: 40px;
-            z-index: 10;
-            max-width: 85%;
-            pointer-events: none;
-        }
+    .buttons { 
+        flex-direction: column !important; 
+        width: 80% !important; 
+        gap: 15px !important; 
+        margin-bottom: -10px !important; /* Espacio entre botones y redes */
+    }
 
-        .portfolio-title {
-            font-family: "Didot", "Playfair Display", "Georgia", serif; 
-            font-size: 24px;
-            font-weight: 400;
-            line-height: 1.3;
-            color: #ffffff;
-            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.6);
-        }
+    .btn { 
+        padding: 18px !important; 
+        font-size: 14px !important; 
+        width: 100% !important; 
+        text-align: center !important; 
+        background: rgba(0,0,0,0.2) !important;
+    }
 
-        /* ADAPTACIÓN MÉTRICA EXCLUSIVA PARA MÓVILES */
-        @media (max-width: 768px) {
-            .portfolio-header {
-                padding: 20px;
-            }
+    /* REDES SOCIALES: Pequeñas, blancas y centradas abajo */
+    .social-icons { 
+        display: flex !important;
+        gap: 30px !important; 
+        justify-content: center !important;
+        width: 100% !important;
+    }
 
-            .portfolio-logo {
-                font-size: 11px;
-                letter-spacing: 0.15em;
-            }
-
-            .portfolio-title-wrapper {
-                top: 95px;
-                left: 20px;
-                max-width: 90%;
-            }
-
-            .portfolio-title {
-                font-size: 18px;
-            }
-        }
+    .social-icons a { 
+        font-size: 18px !important; /* Más pequeñas */
+        color: #ffffff !important;  /* Blanco puro */
+        opacity: 0.8 !important;    /* Un pelín de transparencia para que sea elegante */
+    }
+}
     </style>
 </head>
 <body>
+    <div class="brand"><h1>HUGO RETA</h1></div>
 
-    <header class="portfolio-header">
-        <a href="index.html" class="portfolio-logo">RETA</a>
-        <button class="portfolio-menu-btn" onclick="window.location.href='index.html'" aria-label="Volver">
-            <span></span>
-            <span></span>
-        </button>
-    </header>
+    <div class="vimeo-wrapper desktop-video">
+        <iframe src="https://player.vimeo.com/video/1187447651?background=1&autoplay=1&loop=1&muted=1" frameborder="0" allow="autoplay; fullscreen"></iframe>
+    </div>
 
-    <main class="portfolio-scroll-container">
-        
-        <section class="portfolio-page">
-            <video class="portfolio-media" autoplay muted loop playsinline>
-                <source src="Colourgrading.mp4" type="video/mp4">
-            </video>
-            <div class="portfolio-title-wrapper">
-                <h2 class="portfolio-title">The Art of Colourgrading — Fuerteventura</h2>
-            </div>
-        </section>
+    <div class="vimeo-wrapper mobile-video">
+    <iframe src="https://player.vimeo.com/video/1188860202?background=1&autoplay=1&loop=1&muted=1" frameborder="0" allow="autoplay; fullscreen"></iframe>
+</div>
 
-        <section class="portfolio-page">
-            <img class="portfolio-media" src="proyecto2.jpg" alt="Estudio Bruma">
-            <div class="portfolio-title-wrapper">
-                <h2 class="portfolio-title">Estudio Bruma — Primavera Sound — Pull & Bear</h2>
-            </div>
-        </section>
+    <div class="overlay">
+        <div class="buttons">
+            <a href="portfolio.html" class="btn">Portfolio</a>
+            <a href="myself.html" class="btn">Myself</a>
+        </div>
 
-        <section class="portfolio-page">
-            <img class="portfolio-media" src="proyecto3.jpg" alt="Specialized">
-            <div class="portfolio-title-wrapper">
-                <h2 class="portfolio-title">Performance Core — Specialized Campaign</h2>
-            </div>
-        </section>
-
-        <section class="portfolio-page">
-            <img class="portfolio-media" src="proyecto4.jpg" alt="Adidas">
-            <div class="portfolio-title-wrapper">
-                <h2 class="portfolio-title">Adidas Originals — Street Culture</h2>
-            </div>
-        </section>
-
-    </main>
-
+        <div class="social-icons">
+            <a href="https://instagram.com/tu_usuario" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://tiktok.com/@tu_usuario" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </div>
 </body>
 </html>

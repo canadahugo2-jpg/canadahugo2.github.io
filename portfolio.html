@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Hugo Reta</title>
+    <title>Portfolio</title>
     <style>
-        /* ESTILOS EXCLUSIVOS PARA TU PORTFOLIO - NO TOCAN EL RESTO DE LA WEB */
+        /* RESETEO TOTAL PARA ELIMINAR MÁRGENES Y ESPACIOS */
         * {
             margin: 0;
             padding: 0;
@@ -17,16 +17,16 @@
             color: #ffffff;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             overflow-x: hidden;
-            padding-bottom: 80px; /* Espacio limpio al final de la página */
         }
 
-        /* CABECERA MINIMALISTA (Botón de volver arriba centrado como en tu imagen) */
+        /* CABECERA MINIMALISTA */
         .portfolio-nav {
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 50px 20px;
+            padding: 40px 20px;
+            background-color: #000000;
         }
 
         .back-link {
@@ -43,102 +43,90 @@
             opacity: 1;
         }
 
-        /* CONTENEDOR PRINCIPAL DEL FEED (Ocupa casi toda la pantalla de ancho) */
+        /* FEED COMPLETAMENTE PEGADO (SIN MÁRGENES NI GAP) */
         .portfolio-feed {
-            width: 92%; /* Deja márgenes elegantes a los lados */
-            max-width: 1600px;
-            margin: 0 auto;
+            width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 50px; /* Separación limpia entre un proyecto y otro */
+            gap: 0; /* Elimina cualquier separación vertical */
         }
 
-        /* FILA DE PROYECTO INDIVIDUAL (Uno por línea) */
         .project-row {
             width: 100%;
-            display: flex;
-            flex-direction: column;
-            position: relative;
+            margin: 0;
+            padding: 0;
         }
 
-        /* CONTENEDOR DE LA PORTADA (Formato Panorámico Anamórfico de Cine 21:9) */
+        /* CONTENEDOR PANORÁMICO DE CINE */
         .project-card {
             width: 100%;
-            aspect-ratio: 21 / 9; /* Mucho más alargado que 16:9, formato puramente cinematográfico */
-            overflow: hidden;
+            aspect-ratio: 21 / 9; /* Formato ultra panorámico */
+            overflow: hidden;    /* Evita que la imagen se salga al ampliarse */
             position: relative;
-            background-color: #0b0b0b;
+            cursor: pointer;
         }
 
-        /* Imágenes o vídeos de portada ocupando todo el espacio */
+        /* CONTENIDO MULTIMEDIA */
         .project-media {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
-            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* Sutil efecto visual premium al pasar el ratón por encima */
+        /* EFECTO HOVER 1: AMPLIAR LIGERAMENTE LA IMAGEN EN SU PROPIO ESPACIO */
         .project-card:hover .project-media {
-            transform: scale(1.015);
+            transform: scale(1.03);
         }
 
-        /* Degradado oscuro sutil en la esquina superior para asegurar que el texto blanco se lea siempre */
-        .project-card::before {
-            content: '';
+        /* CAPA OSCURA CON DEGRADADOS TOP/BOTTOM Y CONTENEDOR DEL TEXTO */
+        .project-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 50%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Degradado leve arriba (0% a 25%) y abajo (75% a 100%) */
+            background: linear-gradient(to bottom, 
+                rgba(0, 0, 0, 0.5) 0%, 
+                rgba(0, 0, 0, 0) 25%, 
+                rgba(0, 0, 0, 0) 75%, 
+                rgba(0, 0, 0, 0.5) 100%
+            );
+            opacity: 0; /* Oculto por defecto */
+            transition: opacity 0.5s ease;
             z-index: 2;
-            pointer-events: none;
         }
 
-        /* TIPOGRAFÍA EDITORIAL (Idéntica al estilo flotante del vídeo de referencia) */
-        .project-info {
-            position: absolute;
-            top: 35px;
-            left: 35px;
-            z-index: 3;
-            pointer-events: none;
-            max-width: 80%;
+        /* EFECTO HOVER 2: MOSTRAR TEXTO Y DEGRADADOS */
+        .project-card:hover .project-overlay {
+            opacity: 1;
         }
 
+        /* TIPOGRAFÍA MODERNA EN MINÚSCULA (ESTILO BACK HOME) */
         .project-title {
-            font-family: "Didot", "Playfair Display", "Georgia", serif; /* Tipografía Serif elegante */
-            font-size: 24px;
-            font-weight: 400;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-size: 13px;
+            font-weight: 300;
             color: #ffffff;
-            letter-spacing: 0.01em;
-            line-height: 1.2;
+            letter-spacing: 0.25em;
+            text-transform: lowercase; /* Todo forzado a minúsculas */
+            text-align: center;
+            padding: 0 20px;
         }
 
-        /* AJUSTES PERFECTOS PARA MÓVILES (Para que no quede una tira demasiado estrecha) */
+        /* ADAPTACIÓN EN MÓVILES */
         @media (max-width: 768px) {
-            .portfolio-nav {
-                padding: 35px 20px;
-            }
-            
-            .portfolio-feed {
-                width: 95%;
-                gap: 30px;
-            }
-
             .project-card {
-                aspect-ratio: 16 / 7.5; /* Adaptación de proporción para pantallas verticales */
+                aspect-ratio: 16 / 7.5; /* Un pelín más alto en móviles para que se aprecie la imagen */
             }
-
-            .project-info {
-                top: 20px;
-                left: 20px;
-                max-width: 90%;
-            }
-
             .project-title {
-                font-size: 16px;
+                font-size: 11px;
+                letter-spacing: 0.2em;
             }
         }
     </style>
@@ -156,35 +144,35 @@
                 <video class="project-media" autoplay muted loop playsinline>
                     <source src="Colourgrading.mp4" type="video/mp4">
                 </video>
-                <div class="project-info">
-                    <h2 class="project-title">The Art of Colourgrading — Fuerteventura</h2>
+                <div class="project-overlay">
+                    <h2 class="project-title">proyecto 01</h2>
                 </div>
             </div>
         </article>
 
         <article class="project-row">
             <div class="project-card">
-                <img class="project-media" src="proyecto2.jpg" alt="Estudio Bruma">
-                <div class="project-info">
-                    <h2 class="project-title">Estudio Bruma — Primavera Sound — Pull & Bear</h2>
+                <img class="project-media" src="proyecto2.jpg" alt="">
+                <div class="project-overlay">
+                    <h2 class="project-title">proyecto 02</h2>
                 </div>
             </div>
         </article>
 
         <article class="project-row">
             <div class="project-card">
-                <img class="project-media" src="proyecto3.jpg" alt="Specialized">
-                <div class="project-info">
-                    <h2 class="project-title">Performance Core — Specialized Campaign</h2>
+                <img class="project-media" src="proyecto3.jpg" alt="">
+                <div class="project-overlay">
+                    <h2 class="project-title">proyecto 03</h2>
                 </div>
             </div>
         </article>
 
         <article class="project-row">
             <div class="project-card">
-                <img class="project-media" src="proyecto4.jpg" alt="Adidas">
-                <div class="project-info">
-                    <h2 class="project-title">Adidas Originals — Street Culture</h2>
+                <img class="project-media" src="proyecto4.jpg" alt="">
+                <div class="project-overlay">
+                    <h2 class="project-title">proyecto 04</h2>
                 </div>
             </div>
         </article>

@@ -82,6 +82,25 @@
 
         /* CAPA OSCURA CON DEGRADADOS TOP/BOTTOM Y CONTENEDOR DEL TEXTO */
         .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Degradado leve arriba (0% a 25%) y abajo (75% a 100%) */
+            background: linear-gradient(to bottom, 
+                rgba(0, 0, 0, 0.5) 0%, 
+                rgba(0, 0, 0, 0) 25%, 
+                rgba(0, 0, 0, 0) 75%, 
+                rgba(0, 0, 0, 0.5) 100%
+            );
+            opacity: 0; /* Oculto por defecto */
+            transition: opacity 0.5s ease;
+            z-index: 2;
+        }
     position: absolute;
     top: 0;
     left: 0;
@@ -138,12 +157,14 @@
     </nav>
 
     <main class="portfolio-feed">
-        
+
         <article class="project-row">
             <div class="project-card">
-                <img class="project-media" src="proyect1_1.1.1.jpg" alt="">
-                <div class="proyect-overlay">
-                    <h2 class="project-title">Climate Shelter Short - award-winning comercial</h2>
+                <video class="project-media" autoplay muted loop playsinline>
+                    <source src="Colourgrading.mp4" type="video/mp4">
+                </video>
+                <div class="project-overlay">
+                    <h2 class="project-title">proyecto 01</h2>
                 </div>
             </div>
         </article>
